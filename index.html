@@ -4,59 +4,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=no">
-  <title>Clock</title>
+  <title>Hotchkiss Clock</title>
 
-  <!-- Loads fonts -->
+  <!-- Loads external styles/fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
 
   <!-- Loads stylesheet -->
   <link rel="stylesheet" href="./style.css">
 
+  <!-- Load scripts -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js'></script>
+  <script  src="./script.js"></script>
+
 </head>
 
-<body scroll="no" style="overflow: hidden">
+<body onload="loadTime(),loadDate(),update()" scroll="no" style="overflow: hidden">
   <!-- Darksky Weather Widget -->
   <div class="weather">
     <script type='text/javascript' src='https://darksky.net/widget/default-small/41.9474,-73.4464/us12/en.js?width=90%&height=100&title=Full Forecast&textColor=ffffff&bgColor=transparent&transparency=true&skyColor=undefined&fontFamily=Default&customFont=&units=us'></script>
   </div>
 
   <!-- Clock Element (top left) -->
-  <div class="clock">
-    10:55 PM
+  <div id="clock">
   </div>
 
   <!-- Period/Block Name -->
-  <div class="class-info">
-    <p>
-      Period 5b
-    </p>
+  <div id="class-info">
   </div>
 
   <!-- Schedule info/content -->
-  <div class="schedule-info">
-    <p>
-      Wednesday Schedule <b> ⋅ Activity Weekend</b>
-    </p>
+  <div id="schedule-info">
   </div>
 
   <!-- Clock container -->
   <div class="clock-container">
-  <div class="clock-col">
+  <div class="clock-col" id="hrs">
     <p class="clock-hours clock-timer">
     </p>
     <p class="clock-label">
       Hours
     </p>
   </div>
-  <div class="clock-col">
+  <div class="clock-col" id="mins">
     <p class="clock-minutes clock-timer">
     </p>
     <p class="clock-label">
       Minutes
     </p>
   </div>
-  <div class="clock-col">
+  <div class="clock-col" id="secs">
     <p class="clock-seconds clock-timer">
     </p>
     <p class="clock-label">
@@ -64,9 +61,5 @@
     </p>
   </div>
 </div>
-
-<!-- End-loaded scripts -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js'></script>
-<script  src="./script.js"></script>
 </body>
 </html>
