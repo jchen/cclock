@@ -1,0 +1,184 @@
+/*  Loading hrs, min, and seconds content */
+.clock-hours:before {
+  content: var(--timer-hours);
+}
+.clock-minutes:before {
+  content: var(--timer-minutes);
+}
+.clock-seconds:before {
+  content: var(--timer-seconds);
+}
+
+/* Body style */
+body {
+  /* Font */
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+	color: #fff;
+  /* Animated gradient background */
+	background: linear-gradient(-30deg, #111E6C, #0E4D92, #0F52BA, #003152);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+/* Weather style */
+.weather {
+  float: right;
+  position: absolute;
+  top: 0px;
+  right: -60px;
+}
+
+/* Class info style */
+.class-info {
+  display: flex;
+  position: fixed;
+  left: 45px;
+  bottom: 250px;
+  font-size: 4em;
+  font-weight: 700;
+}
+
+/* Schedule info style */
+.schedule-info {
+  display: flex;
+  position: fixed;
+  left: 50px;
+  bottom: 220px;
+  font-size: 1.3em;
+}
+
+/* Clock big container style */
+.clock-container {
+  background-color: #202020;
+  border-radius: 5px;
+  padding: 25px 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5), 0 15px 90px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  position: fixed;
+  left: 40px;
+  bottom: 40px;
+}
+
+/* Clock column style */
+.clock-col {
+  text-align: center;
+  margin-right: 40px;
+  margin-left: 40px;
+  min-width: 90px;
+  position: relative;
+}
+.clock-col:not(:last-child):before, .clock-col:not(:last-child):after {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  right: -42px;
+}
+.clock-col:not(:last-child):before {
+  top: 35%;
+}
+.clock-col:not(:last-child):after {
+  top: 50%;
+}
+.clock-timer:before {
+  color: #fff;
+  font-size: 5.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.clock-label {
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  font-size: .7rem;
+  margin-top: 10px;
+}
+
+/* For mobile display */
+@media (max-width: 615px) {
+  .clock-container {
+    border-radius: 0px;
+    padding: 20px 100px;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    justify-content: center;
+  }
+  .clock-timer:before {
+    font-size: 3rem;
+  }
+  .class-info {
+    font-size: 3.4rem;
+    bottom: 170px;
+  }
+  .schedule-info {
+    font-size: 1.2rem;
+    bottom: 140px;
+  }
+  .clock-col {
+    text-align: center;
+    margin-right: 40px;
+    margin-left: 40px;
+    min-width: 70px;
+    position: relative;
+  }
+}
+
+/* Corner clock style */
+.clock {
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
+
+/* Sets styles of header, bold and strong as bold */
+h1, h2, h3, h4, h5, h6, b, strong {
+    font-weight: bold;
+}
+
+/* Gradient Code */
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
