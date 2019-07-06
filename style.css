@@ -167,6 +167,37 @@ body {
   }
 }
 
+#info {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+}
+
+#info-text {
+    visibility: hidden;
+    font-size: 1em;
+    float: left;
+    text-align: right;
+    margin: 0px 5px;
+}
+
+#info-circle {
+    margin: 0px 5px;
+}
+
+#bug-report {
+    color: #ffffff;
+}
+
+#info:hover #info-text {
+    visibility: visible;
+}
+
+@media (max-width: 900px) {
+    #info {
+        visibility: hidden;
+    }
+}
 
 /* Sets styles of header, bold and strong as bold */
 h1, h2, h3, h4, h5, h6, b, strong {
