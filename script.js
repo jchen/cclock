@@ -153,14 +153,12 @@ function update() {
   } else {}
   if (showTime) {
     document.getElementById("hrs").style.display = "block";
-    var nowH = moment().format("k");
-    var nowM = moment().format("mm");
-    var nowS = moment().format("ss");
-    document.documentElement.style.setProperty('--timer-hours', "'" + nowH + "'");
-    document.documentElement.style.setProperty('--timer-minutes', "'" + nowM + "'");
-    document.documentElement.style.setProperty('--timer-seconds', "'" + nowS + "'");
+    rawTime = parseRaw();
+    document.documentElement.style.setProperty('--timer-hours', "'" + toHrs(rawTime).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + "'");
+    document.documentElement.style.setProperty('--timer-minutes', "'" + toMins(rawTime).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + "'");
+    document.documentElement.style.setProperty('--timer-seconds', "'" + toSecs(rawTime).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + "'");
     }
-    document.title = "Hotchkiss Clock ⋅ " + moment().format("k") + ":" + moment().format("mm") + ":" + moment().format("ss");
+    document.title = "Hotchkiss Clock ⋅ " + toHrs(rawTime).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" + toMins(rawTime).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" + toSecs(rawTime).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
 }
 
 // Gets the right schedule for a regular class day
