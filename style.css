@@ -13,7 +13,6 @@
 body {
   /* Font */
   font-family: 'Open Sans', sans-serif;
-  min-height: 100vh;
   min-height: 300px;
   min-width: 500px;
   display: flex;
@@ -54,6 +53,7 @@ body {
   left: 50px;
   bottom: 220px;
   font-size: 1.3em;
+  white-space: pre-wrap;
 }
 
 /* Clock big container style */

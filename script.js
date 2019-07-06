@@ -17,20 +17,19 @@ function updateD() {
 }
 
 var showTime = true;
-
 var descText;
+var weekendText = "";
 
 // Gets the classification of the date, and returns 0 if it is a normal day. Also contains dictionaries for special days.
+// Defines the special days
+var onbreak = false;
+var specialDays = [new CalDay(3, 8), new CalDay(4, 25)]; // <- For special event days
+var noClassSats = [new CalDay(4, 20), new CalDay(5, 4), new CalDay(5, 18)]; // <- For days without Saturday classes
+var noClassDays = [new CalDay(4, 22), new CalDay(5, 18), new CalDay(5, 27), new CalDay(6, 1)]; // <- For days without classes, or breaks
+var holidayDays = []; // <- For holidays
 function dayType() {
-  // Defines the special days
-  var onbreak = false;
-  var specialDays = [new calDay(3, 8), new calDay(4, 25)]; // <- For special event days
-  var noClassSats = [new calDay(4, 20), new calDay(5, 4), new calDay(5, 18)]; // <- For days without Saturday classes
-  var noClasses = [new calDay(4, 22), new calDay(5, 18), new calDay(5, 27), new calDay(6, 1)]; // <- For days without classes, or breaks
-  var holiday = []; // <- For holidays
-
   for (i = 0; i < specialDays.length; i++) {
-    if (specialDays[i].month == d.getMonth() && specialDays[i].date == d.getDate()) {
+    if (specialDays[i].month === d.getMonth() && specialDays[i].date === d.getDate()) {
       return 1;
     }
     // console.log(" *** specialDays[i].month " + specialDays[i].month);
@@ -39,21 +38,21 @@ function dayType() {
   }
 
   for (i = 0; i < noClassSats.length; i++) {
-    if (noClassSats[i].month == d.getMonth() && noClassSats[i].date == d.getDate()) {
+    if (noClassSats[i].month === d.getMonth() && noClassSats[i].date === d.getDate()) {
       return 2;
     }
     // console.log(" *** dayType noClassSats " + i);
   }
 
-  for (i = 0; i < noClasses.length; i++) {
-    if (noClasses[i].month == d.getMonth() && noClasses[i].date == d.getDate()) {
+  for (i = 0; i < noClassDays.length; i++) {
+    if (noClassDays[i].month === d.getMonth() && noClassDays[i].date === d.getDate()) {
       return 3;
     }
-    // console.log(" *** dayType noClasses " + i);
+    // console.log(" *** dayType noClassDays " + i);
   }
 
   for (i = 0; i < holiday.length; i++) {
-    if (holiday[i].month == d.getMonth() && holiday[i].date == d.getDate()) {
+    if (holidayDays[i].month === d.getMonth() && holidayDays[i].date === d.getDate()) {
       return 4;
     }
     // console.log(" *** dayType holiday " + i);
@@ -67,6 +66,7 @@ function dayType() {
 }
 
 function loadTime() {
+  d = new Date();
   // Adjusts into AM and PM time
   var hr = ((d.getHours() + 11) % 12 + 1);
   var sufx = (d.getHours() >= 12) ? 'PM' : 'AM';
@@ -86,8 +86,8 @@ function loadDate() {
 
 // Below mostly code from Eric Li '13
 
-// Defines a period
-function period(title, startHr, startMin, endHr, endMin) {
+// Defines a Period
+function Period(title, startHr, startMin, endHr, endMin) {
   this.title = title;
   this.startHr = startHr;
   this.startMin = startMin;
@@ -97,7 +97,7 @@ function period(title, startHr, startMin, endHr, endMin) {
   this.endRaw = endHr * 3600 + endMin * 60;
 }
 
-function calDay(month, date) {
+function CalDay(month, date) {
   this.date = date;
   // console.log(this.date);
   this.month = month - 1;
@@ -111,23 +111,23 @@ function update() {
   // Debug ***
   // console.log(type);
   // Checks for special days
-  if (type == 1) {
+  if (type === 1) {
     specialSchedule();
-  } else if (type == 2) {
+  } else if (type === 2) {
     noClassSat();
-  } else if (type == 3) {
+  } else if (type === 3) {
     noClasses();
-  } else if (type == 4) {
+  } else if (type === 4) {
     holiday();
-  } else if (type == 5) {
+  } else if (type === 5) {
     schoolBreak();
-  } else if (type == 0) {
+  } else if (type === 0) {
     // console.log(" *** Is normal day");
     // Gets today's schedule
     var currentSchedule = getSchedule();
     // console.log(" *** currentSchedule " + currentSchedule.length);
 
-    // Checks which period it currently is
+    // Checks which Period it currently is
     for (i = 0; i < currentSchedule.length; i++) {
       // console.log(" *** for i " + i);
       // console.log(" *** parseRaw " + parseRaw());
@@ -138,7 +138,7 @@ function update() {
 
       if (currentSchedule[i].startRaw < parseRaw() && parseRaw() < currentSchedule[i].endRaw) {
         // console.log(" *** currentSchedule[i].startRaw " + currentSchedule[i].startRaw);
-        if (currentSchedule[i].title == "Passing Period") {
+        if (currentSchedule[i].title === "Passing Period") {
           normalDay(currentSchedule[i].title, currentSchedule[i].endRaw - parseRaw(), currentSchedule[i + 1].title, currentSchedule[i + 1].startRaw - parseRaw());
         } else {
           normalDay(currentSchedule[i].title, currentSchedule[i].endRaw - parseRaw(), currentSchedule[i + 2].title, currentSchedule[i + 2].startRaw - parseRaw());
@@ -155,13 +155,12 @@ function update() {
     document.getElementById("hrs").style.display = "block";
     var nowH = moment().format("k");
     var nowM = moment().format("mm");
-    var nowS = moment().format("ss")
+    var nowS = moment().format("ss");
     document.documentElement.style.setProperty('--timer-hours', "'" + nowH + "'");
     document.documentElement.style.setProperty('--timer-minutes', "'" + nowM + "'");
     document.documentElement.style.setProperty('--timer-seconds', "'" + nowS + "'");
     }
-    var title = "Hotchkiss Clock ⋅ " + moment().format("k") + ":" + moment().format("mm") + ":" + moment().format("ss");
-    document.title = title;
+    document.title = "Hotchkiss Clock ⋅ " + moment().format("k") + ":" + moment().format("mm") + ":" + moment().format("ss");
 }
 
 // Gets the right schedule for a regular class day
@@ -170,71 +169,71 @@ function getSchedule() {
   var weekday = d.getDay();
 
   // Defines the currentSchedule array
-  var currentSchedule = new Array();
+  var currentSchedule = [];
 
   // Assigns class schedules for weekday scenarios
-  if (weekday == 1 || weekday == 4) {
-    currentSchedule[0] = new period("Period 1", 8, 30, 9, 15);
-    currentSchedule[1] = new period("Passing Period", 9, 15, 9, 20);
-    currentSchedule[2] = new period("Period 2", 9, 20, 10, 5);
-    currentSchedule[3] = new period("Passing Period", 10, 5, 10, 10);
-    currentSchedule[4] = new period("Chapel / Class Meeting", 10, 10, 10, 35);
-    currentSchedule[5] = new period("Passing Period", 10, 35, 10, 40);
-    currentSchedule[6] = new period("Period 3", 10, 40, 11, 20);
-    currentSchedule[7] = new period("Passing Period", 11, 20, 11, 25);
-    currentSchedule[8] = new period("Period 4", 11, 25, 12, 5);
-    currentSchedule[9] = new period("Passing Period", 12, 5, 12, 10);
-    currentSchedule[10] = new period("Period 5A", 12, 10, 12, 55);
-    currentSchedule[11] = new period("Lunch Bell", 12, 55, 12, 55);
-    currentSchedule[12] = new period("Period 5B", 12, 55, 13, 40);
-    currentSchedule[13] = new period("Passing Period", 13, 40, 13, 45);
-    currentSchedule[14] = new period("Period 6", 13, 45, 14, 30);
-    currentSchedule[15] = new period("Passing Period", 14, 30, 14, 35);
-    currentSchedule[16] = new period("Period 7", 14, 35, 15, 20);
-    currentSchedule[17] = new period("end of school", 15, 20, 15, 20);
-    currentSchedule[18] = new period("end of school", 15, 20, 15, 20);
-  } else if (weekday == 2 || weekday == 5) {
-    currentSchedule[0] = new period("Period 1", 8, 30, 9, 10);
-    currentSchedule[1] = new period("Passing Period", 9, 10, 9, 15);
-    currentSchedule[2] = new period("Period 2", 9, 15, 9, 55);
-    currentSchedule[3] = new period("Passing Period", 9, 55, 10, 00);
-    currentSchedule[4] = new period("Auditorium", 10, 00, 10, 35);
-    currentSchedule[5] = new period("Passing Period", 10, 35, 10, 40);
-    currentSchedule[6] = new period("Period 3", 10, 40, 11, 20);
-    currentSchedule[7] = new period("Passing Period", 11, 20, 11, 25);
-    currentSchedule[8] = new period("Period 4", 11, 25, 12, 5);
-    currentSchedule[9] = new period("Passing Period", 12, 5, 12, 10);
-    currentSchedule[10] = new period("Period 5A", 12, 10, 12, 55);
-    currentSchedule[11] = new period("Lunch Bell", 12, 55, 12, 55);
-    currentSchedule[12] = new period("Period 5B", 12, 55, 13, 40);
-    currentSchedule[13] = new period("Passing Period", 13, 40, 13, 45);
-    currentSchedule[14] = new period("Period 6", 13, 45, 14, 30);
-    currentSchedule[15] = new period("Passing Period", 14, 30, 14, 35);
-    currentSchedule[16] = new period("Period 7", 14, 35, 15, 20);
-    currentSchedule[17] = new period("end of school", 15, 20, 15, 20);
-    currentSchedule[18] = new period("end of school", 15, 20, 15, 20);
-  } else if (weekday == 3) {
-    currentSchedule[0] = new period("Period 1", 8, 50, 9, 35);
-    currentSchedule[1] = new period("Passing Period", 9, 35, 9, 40);
-    currentSchedule[2] = new period("Period 2", 9, 40, 10, 25);
-    currentSchedule[3] = new period("Passing Period", 10, 25, 10, 30);
-    currentSchedule[4] = new period("Advisory", 10, 30, 10, 45);
-    currentSchedule[5] = new period("Passing Period", 10, 45, 10, 50);
-    currentSchedule[6] = new period("Period 3", 10, 50, 11, 30);
-    currentSchedule[7] = new period("Passing Period", 11, 30, 11, 35);
-    currentSchedule[8] = new period("Period 4", 11, 35, 12, 15);
-    currentSchedule[9] = new period("end of school", 12, 15, 12, 15);
-    currentSchedule[10] = new period("end of school", 12, 15, 12, 15);
-  } else if (weekday == 6) {
-    currentSchedule[0] = new period("Period 1", 8, 30, 9, 15);
-    currentSchedule[1] = new period("Passing Period", 9, 15, 9, 20);
-    currentSchedule[2] = new period("Period 2", 9, 20, 10, 5);
-    currentSchedule[3] = new period("Break", 10, 5, 10, 20);
-    currentSchedule[4] = new period("Period 3", 10, 20, 11, 5);
-    currentSchedule[5] = new period("Passing Period", 11, 5, 11, 10);
-    currentSchedule[6] = new period("Period 4", 11, 10, 11, 55);
-    currentSchedule[7] = new period("end of school", 11, 55, 11, 55);
-    currentSchedule[8] = new period("end of school", 11, 55, 11, 55);
+  if (weekday === 1 || weekday === 4) {
+    currentSchedule[0] = new Period("Period 1", 8, 30, 9, 15);
+    currentSchedule[1] = new Period("→ Period 2", 9, 15, 9, 20);
+    currentSchedule[2] = new Period("Period 2", 9, 20, 10, 5);
+    currentSchedule[3] = new Period("Passing Period", 10, 5, 10, 10);
+    currentSchedule[4] = new Period("Chapel / Class Meeting", 10, 10, 10, 35);
+    currentSchedule[5] = new Period("→ Period 3", 10, 35, 10, 40);
+    currentSchedule[6] = new Period("Period 3", 10, 40, 11, 20);
+    currentSchedule[7] = new Period("→ Period 4", 11, 20, 11, 25);
+    currentSchedule[8] = new Period("Period 4", 11, 25, 12, 5);
+    currentSchedule[9] = new Period("→ Period 5A", 12, 5, 12, 10);
+    currentSchedule[10] = new Period("Period 5A", 12, 10, 12, 55);
+    currentSchedule[11] = new Period("Lunch Bell", 12, 55, 12, 55);
+    currentSchedule[12] = new Period("Period 5B", 12, 55, 13, 40);
+    currentSchedule[13] = new Period("→ Period 6", 13, 40, 13, 45);
+    currentSchedule[14] = new Period("Period 6", 13, 45, 14, 30);
+    currentSchedule[15] = new Period("→ Period 7", 14, 30, 14, 35);
+    currentSchedule[16] = new Period("Period 7", 14, 35, 15, 20);
+    currentSchedule[17] = new Period("end of school", 15, 20, 15, 20);
+    currentSchedule[18] = new Period("end of school", 15, 20, 15, 20);
+  } else if (weekday === 2 || weekday === 5) {
+    currentSchedule[0] = new Period("Period 1", 8, 30, 9, 10);
+    currentSchedule[1] = new Period("→ Period 2", 9, 10, 9, 15);
+    currentSchedule[2] = new Period("Period 2", 9, 15, 9, 55);
+    currentSchedule[3] = new Period("Passing Period", 9, 55, 10, 0);
+    currentSchedule[4] = new Period("Auditorium", 10, 0, 10, 35);
+    currentSchedule[5] = new Period("→ Period 3", 10, 35, 10, 40);
+    currentSchedule[6] = new Period("Period 3", 10, 40, 11, 20);
+    currentSchedule[7] = new Period("→ Period 4", 11, 20, 11, 25);
+    currentSchedule[8] = new Period("Period 4", 11, 25, 12, 5);
+    currentSchedule[9] = new Period("→ Period 5A", 12, 5, 12, 10);
+    currentSchedule[10] = new Period("Period 5A", 12, 10, 12, 55);
+    currentSchedule[11] = new Period("Lunch Bell", 12, 55, 12, 55);
+    currentSchedule[12] = new Period("Period 5B", 12, 55, 13, 40);
+    currentSchedule[13] = new Period("→ Period 6", 13, 40, 13, 45);
+    currentSchedule[14] = new Period("Period 6", 13, 45, 14, 30);
+    currentSchedule[15] = new Period("→ Period 7", 14, 30, 14, 35);
+    currentSchedule[16] = new Period("Period 7", 14, 35, 15, 20);
+    currentSchedule[17] = new Period("end of school", 15, 20, 15, 20);
+    currentSchedule[18] = new Period("end of school", 15, 20, 15, 20);
+  } else if (weekday === 3) {
+    currentSchedule[0] = new Period("Period 1", 8, 50, 9, 35);
+    currentSchedule[1] = new Period("→ Period 2", 9, 35, 9, 40);
+    currentSchedule[2] = new Period("Period 2", 9, 40, 10, 25);
+    currentSchedule[3] = new Period("→ Advisory", 10, 25, 10, 30);
+    currentSchedule[4] = new Period("Advisory", 10, 30, 10, 45);
+    currentSchedule[5] = new Period("→ Period 3", 10, 45, 10, 50);
+    currentSchedule[6] = new Period("Period 3", 10, 50, 11, 30);
+    currentSchedule[7] = new Period("→ Period 4", 11, 30, 11, 35);
+    currentSchedule[8] = new Period("Period 4", 11, 35, 12, 15);
+    currentSchedule[9] = new Period("end of school", 12, 15, 12, 15);
+    currentSchedule[10] = new Period("end of school", 12, 15, 12, 15);
+  } else if (weekday === 6) {
+    currentSchedule[0] = new Period("Period 1", 8, 30, 9, 15);
+    currentSchedule[1] = new Period("→ Period 2", 9, 15, 9, 20);
+    currentSchedule[2] = new Period("Period 2", 9, 20, 10, 5);
+    currentSchedule[3] = new Period("Break", 10, 5, 10, 20);
+    currentSchedule[4] = new Period("Period 3", 10, 20, 11, 5);
+    currentSchedule[5] = new Period("→ Period 4", 11, 5, 11, 10);
+    currentSchedule[6] = new Period("Period 4", 11, 10, 11, 55);
+    currentSchedule[7] = new Period("end of school", 11, 55, 11, 55);
+    currentSchedule[8] = new Period("end of school", 11, 55, 11, 55);
   } else {
     noClasses();
   }
@@ -274,14 +273,27 @@ function schoolBreak() // <- What to print during school breaks
 function normalDay(nowTitle, nowDiff, nextTitle, nextDiff) // <- What to print during normal days
 {
   document.getElementById("class-info").innerHTML = nowTitle;
-  document.getElementById("schedule-info").innerHTML = descText;
+  document.getElementById("schedule-info").innerHTML = descText + weekendText;
   printTime(nowDiff);
 }
 
 function beforeSchool(title, time) {
   document.getElementById("class-info").innerHTML = "→ " + title;
-  document.getElementById("schedule-info").innerHTML = descText;
+  document.getElementById("schedule-info").innerHTML = descText + weekendText;
   printTime(time);
+}
+
+function thisWeekend() {
+  for (d = 0; d < 7; d++) {
+    var result = new Date();
+    result.setDate(result.getDate() + d);
+    for (i = 0; i < noClassSats.length; i++) {
+      if (noClassSats[i].month === result.getMonth() && noClassSats[i].date === result.getDate()) {
+      return "<b> ⋅ No-Class Weekend</b>";
+      }
+    }
+  }
+  return "<b> ⋅ Normal Weekend</b>";
 }
 
 function parseRaw() {
@@ -290,7 +302,7 @@ function parseRaw() {
 
 function printTime(raw) {
   showTime = false;
-  if (toHrs(raw) == 0)
+  if (toHrs(raw) === 0)
   {
     document.getElementById("hrs").style.display = "none";
   }
@@ -318,29 +330,29 @@ function toSecs(raw) {
 function rawToString(raw) {
   var output = "";
 
-  if (toHrs(raw) == 0) {} else if (toHrs(raw) == 1) {
+  if (toHrs(raw) === 0) {} else if (toHrs(raw) === 1) {
     output += toHrs(raw) + " hour ";
   } else {
     output += toHrs(raw) + " hours ";
   }
 
   if (showSeconds) {
-    if (toMins(raw) == 0) {
-      if (toSecs(raw) == 1) {
+    if (toMins(raw) === 0) {
+      if (toSecs(raw) === 1) {
         output += toSecs(raw) + " second";
       } else {
         output += toSecs(raw) + " seconds";
       }
-    } else if (toMins(raw) == 1) {
+    } else if (toMins(raw) === 1) {
       output += toMins(raw) + " minute ";
-      if (toSecs(raw) == 1) {
+      if (toSecs(raw) === 1) {
         output += toSecs(raw) + " second";
       } else {
         output += toSecs(raw) + " seconds";
       }
     } else {
       output += toMins(raw) + " minutes ";
-      if (toSecs(raw) == 1) {
+      if (toSecs(raw) === 1) {
         output += toSecs(raw) + " second";
       } else {
         output += toSecs(raw) + " seconds";
@@ -348,13 +360,23 @@ function rawToString(raw) {
     }
   } else {
     var ceilMins = toMins(raw) + 1;
-    if (toMins(raw) == 0) {
+    if (toMins(raw) === 0) {
       output += ceilMins + " minute";
     } else {
       output += ceilMins + " minutes";
     }
   }
   return output;
+}
+
+window.addEventListener('load', onLoad);
+
+function onLoad() {
+  d = new Date();
+  loadTime();
+  loadDate();
+  update();
+  weekendText = thisWeekend();
 }
 
 setInterval(loadTime, 1000);

@@ -13,7 +13,6 @@
 body {
   /* Font */
   font-family: 'Open Sans', sans-serif;
-  min-height: 100vh;
   min-height: 300px;
   min-width: 500px;
   display: flex;
@@ -38,7 +37,7 @@ body {
 }
 
 /* Class info style */
-.class-info {
+#class-info {
   display: flex;
   position: fixed;
   left: 45px;
@@ -48,12 +47,13 @@ body {
 }
 
 /* Schedule info style */
-.schedule-info {
+#schedule-info {
   display: flex;
   position: fixed;
   left: 50px;
   bottom: 220px;
   font-size: 1.3em;
+  white-space: pre-wrap;
 }
 
 /* Clock big container style */
@@ -106,7 +106,7 @@ body {
 }
 
 /* Corner clock style */
-.clock {
+#clock {
   font-size: 1.5rem;
   font-weight: 600;
   position: absolute;
@@ -127,11 +127,11 @@ body {
   .clock-timer:before {
     font-size: 3rem;
   }
-  .class-info {
+  #class-info {
     font-size: 3.4rem;
     bottom: 170px;
   }
-  .schedule-info {
+  #schedule-info {
     font-size: 1.2rem;
     bottom: 140px;
   }
@@ -149,17 +149,17 @@ body {
   .clock-timer:before {
     font-size: 2rem;
   }
-  .class-info {
+  #class-info {
     font-size: 3rem;
     bottom: 150px;
   }
-  .schedule-info {
+  #schedule-info {
     font-size: 1rem;
     bottom: 120px;
   }
   .clock-col {
   }
-  .clock {
+  #clock {
     font-size: 1.2rem;
   }
   .weather {
