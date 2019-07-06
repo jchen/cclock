@@ -30,8 +30,9 @@ body {
 .weather {
   float: right;
   position: absolute;
+  width: 170px;
   top: 0px;
-  right: -60px;
+  right: 0px;
 }
 
 /* Class info style */
