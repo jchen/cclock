@@ -22,7 +22,7 @@ var weekendText = "";
 
 // Gets the classification of the date, and returns 0 if it is a normal day. Also contains dictionaries for special days.
 // Defines the special days
-var onbreak = false;
+var onbreak = true;
 var specialDays = [new CalDay(3, 8), new CalDay(4, 25)]; // <- For special event days
 var noClassSats = [new CalDay(4, 20), new CalDay(5, 4), new CalDay(5, 18)]; // <- For days without Saturday classes
 var noClassDays = [new CalDay(4, 22), new CalDay(5, 18), new CalDay(5, 27), new CalDay(6, 1)]; // <- For days without classes, or breaks
@@ -168,13 +168,15 @@ function update() {
             useGrouping: false
         }) + "'");
     }
-    document.title = "Hotchkiss Clock ⋅ " + toHrs(rawTime).toLocaleString('en-US', {
-        minimumIntegerDigits: 2,
-        useGrouping: false
-    }) + ":" + toMins(rawTime).toLocaleString('en-US', {
-        minimumIntegerDigits: 2,
-        useGrouping: false
-    }) + ":" + toSecs(rawTime).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
+
+    // Code to change the Document Title, disabled for now.
+    // document.title = "Hotchkiss Clock ⋅ " + toHrs(rawTime).toLocaleString('en-US', {
+    //     minimumIntegerDigits: 2,
+    //     useGrouping: false
+    // }) + ":" + toMins(rawTime).toLocaleString('en-US', {
+    //     minimumIntegerDigits: 2,
+    //     useGrouping: false
+    // }) + ":" + toSecs(rawTime).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
 }
 
 // Gets the right schedule for a regular class day

@@ -2,7 +2,7 @@
 Controller for message on clock/time webapp
 Jiahua Chen
 Inspired by codepen/kkoutoup
-Last updated 16 Apr 2019
+Last updated 6 July 2019
 */
 
 window.addEventListener('load', loadMessage);
