@@ -1,72 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=no">
-  <meta http-equiv="Cache-control" content="public">
-  <title>Hotchkiss Clock</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=no">
+    <meta http-equiv="Cache-control" content="public">
+    <title>Hotchkiss Clock</title>
 
-  <!-- Loads external styles/fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+    <!-- Loads external styles/fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap"
+          rel="stylesheet">
 
-  <!-- Loads stylesheet -->
-  <link rel="stylesheet" href="./style.css">
+    <!-- Loads stylesheet -->
+    <link rel="stylesheet" href="./style.css">
 
 </head>
 
 <body scroll="no" style="overflow: hidden">
-  <!-- Darksky Weather Widget -->
-  <div class="weather">
-    <script type='text/javascript' src='https://darksky.net/widget/default-small/41.9474,-73.4464/us12/en.js?width=90%&height=100&title=Full Forecast&textColor=ffffff&bgColor=transparent&transparency=true&skyColor=undefined&fontFamily=Default&customFont=&units=us'></script>
-  </div>
-
-  <!-- Clock Element (top left) -->
-  <div id="clock">
-  </div>
-
-  <!-- Period/Block Name -->
-  <div id="class-info">
-  </div>
-
-  <!-- Schedule info/content -->
-  <div id="schedule-info">
-  </div>
-
-  <!-- Clock container -->
-  <div class="clock-container">
-  <div class="clock-col" id="hrs">
-    <p class="clock-hours clock-timer">
-    </p>
-    <p class="clock-label">
-      Hours
-    </p>
-  </div>
-  <div class="clock-col" id="mins">
-    <p class="clock-minutes clock-timer">
-    </p>
-    <p class="clock-label">
-      Minutes
-    </p>
-  </div>
-  <div class="clock-col" id="secs">
-    <p class="clock-seconds clock-timer">
-    </p>
-    <p class="clock-label">
-      Seconds
-    </p>
-  </div>
+<!-- Darksky Weather Widget -->
+<div class="weather">
+    <script type='text/javascript'
+            src='https://darksky.net/widget/default-small/41.9474,-73.4464/us12/en.js?width=90%&height=100&title=Full Forecast&textColor=ffffff&bgColor=transparent&transparency=true&skyColor=undefined&fontFamily=Default&customFont=&units=us'></script>
 </div>
 
-  <div id="info">
+<!-- Clock Element (top left) -->
+<div id="clock">
+</div>
+
+<!-- Period/Block Name -->
+<div id="class-info">
+</div>
+
+<!-- Schedule info/content -->
+<div id="schedule-info">
+</div>
+
+<!-- Clock container -->
+<div class="clock-container">
+    <div class="clock-col" id="hrs">
+        <p class="clock-hours clock-timer">
+        </p>
+        <p class="clock-label">
+            Hours
+        </p>
+    </div>
+    <div class="clock-col" id="mins">
+        <p class="clock-minutes clock-timer">
+        </p>
+        <p class="clock-label">
+            Minutes
+        </p>
+    </div>
+    <div class="clock-col" id="secs">
+        <p class="clock-seconds clock-timer">
+        </p>
+        <p class="clock-label">
+            Seconds
+        </p>
+    </div>
+</div>
+
+<div id="info">
     <span id="info-text">Eric Li ’13, Jiahua Chen ’20   </span>
     <i id="info-circle" class="fas fa-info-circle"></i>
     <a href="mailto:jchen20@hotchkiss.org"><i id="bug-report" class="fas fa-bug"></i></a>
-  </div>
+</div>
 
-  <!-- Load scripts -->
-  <script  src="./script.js"></script>
-  <script src="https://kit.fontawesome.com/0eed931c3a.js"></script>
+<div id="widgets-bar">
+    <div class="widget" id="message-widget" style="display: none;">
+        <p id="message" align="center" style="font-weight: 700;"></p>
+    </div>
+    <div class="widget" id="quote-widget" style="display: none;">
+        <p id="quote"></p>
+        <p align="right" id="speaker" style="font-weight: 700;"></p>
+    </div>
+</div>
+
+<!-- Load scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./script.js"></script>
+<script src="./message.js"></script>
+<script src="https://kit.fontawesome.com/0eed931c3a.js"></script>
 </body>
 </html>
