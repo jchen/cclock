@@ -207,6 +207,10 @@ body {
         position: relative;
         margin: 25px 5%;
     }
+
+    .widget:last-of-type {
+        margin-bottom: 60px;
+    }
 }
 
 /* For chrome widget display */
