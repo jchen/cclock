@@ -136,7 +136,8 @@ body {
     width: 400px;
     height: 55%;
     padding: 100px 50px 50px 100%;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 1)), color-stop(75%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, 0)));
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 25%);
+    mask-image: linear-gradient(to bottom, black 75%, transparent 25%);
     overflow: scroll;
     z-index: 0;
     /*flex-wrap: wrap-reverse;*/
