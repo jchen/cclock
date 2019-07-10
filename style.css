@@ -146,6 +146,8 @@ body {
     z-index: 0;
 
     /* Fixing Scroll-Jumping on Mobile*/
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     -webkit-overflow-scrolling: touch
 
     /* Wrapping */
