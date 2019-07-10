@@ -155,7 +155,7 @@ body {
 }
 
 .widget:last-of-type {
-    margin: 0px 0px 60px 0px;
+    margin-bottom: 60px;
 }
 
 /* For mobile display */
