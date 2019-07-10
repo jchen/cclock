@@ -138,17 +138,11 @@ body {
     padding: 100px 50px 50px 100%;
 
     /* Gradient Mask*/
-    /*-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 1)), color-stop(75%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, 0)));*/
     -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 5%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
     mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 5%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
     overflow-y: scroll;
     overflow-x: hidden;
     z-index: 0;
-
-    /* Fixing Scroll-Jumping on Mobile*/
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-overflow-scrolling: touch
 
     /* Wrapping */
     /*flex-wrap: wrap-reverse;*/
@@ -216,7 +210,6 @@ body {
         position: relative;
         margin: 25px 5%;
     }
-
 }
 
 /* For chrome widget display */
