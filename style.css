@@ -23,7 +23,7 @@ body {
     color: #fff;
     /* Animated gradient background */
     background: linear-gradient(-30deg, #111E6C, #0E4D92, #0F52BA, #003152);
-    background-size: 600% 600%;
+    background-size: 1000% 1000%;
     -webkit-animation: Gradient 15s ease infinite;
     -moz-animation: Gradient 15s ease infinite;
     animation: Gradient 15s ease infinite;
