@@ -1,9 +1,21 @@
-# 🕒 CClock
-![version](https://img.shields.io/badge/version-2.1-yellowgreen.svg)
+# 🕒 CClock · ![version](https://img.shields.io/badge/version-2.1-yellowgreen.svg)
 
 **CClock** stands for *countdown clock*, or *class clock*. It is meant to count down the time left in each class block, and is also a reminder for the time remaining until the start of the next class block. CClock is fully customizable, adaptable, and works on all devices. Additionally, the simplest version of CClock (here) is fully static and only runs clientside. This means that CClock can be run from Github Pages or another static site host. 
 
 ![Screenshot of CClock](https://jiahuac.github.io/cclock/assets/screenshot.jpg)
+
+## Table of Contents
+  * [Installation](#installation)
+  * [Appearance](#appearance)
+    + [Fonts](#fonts)
+    + [Background](#background)
+  * [Customization](#customization)
+    + [Add your own schedule](#add-your-own-schedule)
+    + [Special schedules](#special-schedules)
+    + [Widgets](#widgets)
+    + [Messages & Quotes](#messages--quotes)
+  * [To-Do](#to-do)
+  * [Thanks](#thanks)
 
 ## Installation
 CClock can be downloaded through Github: 
@@ -89,3 +101,14 @@ var message = ["Have a great summer! "]; // <- Message goes here!
 You can change this message to whatever you want, and it will load the first message in the `message` array into the message widget block. 
 
 The clock will also display a random inspirational quote whenever you load it, loaded into the `quotes` array in `messages.js`. You can customize the 'speaker' and 'quote' of all these quotes (or do something else with it). 
+
+## To-Do
+- [X] Widgets. 
+- [ ] Offline mode for mobile. (PWA Support and UpUp)
+- [ ] Dynamic schedule. 
+- [ ] Dynamic plugins. 
+
+## Thanks
+The design of version 2 was inspired by [Decount](https://decount.co/) (and this design was reimplemented into Decount), and the original source code was adapted from [Eric Li's Network Clock](https://github.com/eli8527/Network-Clock). 
+
+CClock © 2019, Jiahua Chen. Released under the [MIT License](https://mit-license.org/).
