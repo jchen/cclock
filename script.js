@@ -446,6 +446,8 @@ function cookieCheck(scheduleToCheck)
 			var numIdx = 7;
 			if(addArrow) {numIdx = 9;}
 			var currentPeriodNum = parseInt(currentPeriodName.charAt(numIdx));
+			if(currentPeriodNum > 5){currentPeriodNum = currentPeriodNum + 1;}
+			if(currentPeriodName.includes("5B")){currentPeriodNum = 6;}
 			if(!(getCookie(currentAbbrev + currentPeriodNum) === "")){
 				currentPeriodName = getCookie(currentAbbrev + currentPeriodNum);
 				if(addArrow){currentPeriodName = "→ " + currentPeriodName;}
