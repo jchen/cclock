@@ -103,7 +103,7 @@ var quotes = [
         name: "George Carlin"
     },
     {
-        quote: "Hapiness is not something ready made. It comes from your own actions.",
+        quote: "Happiness is not something ready made. It comes from your own actions.",
         name: "Dalai Lama"
     }
 ];  // <- Quotes go here
