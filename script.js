@@ -1,19 +1,19 @@
 /*
 Controller for clock/time webapp
-Jiahua Chen, based off Eric Li's original design
-Last updated 6 July 2019
+Nicholas Lorentzen, Jiahua Chen, based off Eric Li's original design
+Last updated 25 August 2019
 */
 
 // Gets the current date and time
-var d = new Date();
-// var d = new Date(2019,2,5,15,13,03,0);
+//var d = new Date();
+var d = new Date(2019,8,26,14,30,7,0);
 // console.log(" *** d.getDate() " + d.getDate());
 // console.log(" *** d.getMonth() " + d.getMonth());
 // console.log(" *** dayType noClassSats" + i);
 
 // Updates the date and time
 function updateD() {
-    d = new Date();
+    //d = new Date();
 }
 
 var showTime = true;
@@ -21,13 +21,17 @@ var descText;
 var weekendText = "";
 
 // Gets the classification of the date, and returns 0 if it is a normal day. Also contains dictionaries for special days.
+
 // Defines the special days
-var onbreak = true;
+var onbreak = false;
 var specialDays = [new CalDay(3, 8), new CalDay(4, 25)]; // <- For special event days
 var noClassSats = [new CalDay(4, 20), new CalDay(5, 4), new CalDay(5, 18)]; // <- For days without Saturday classes
 var noClassDays = [new CalDay(4, 22), new CalDay(5, 18), new CalDay(5, 27), new CalDay(6, 1)]; // <- For days without classes, or breaks
 var holidayDays = []; // <- For holidays
+
+
 function dayType() {
+	var i = 0;
     for (i = 0; i < specialDays.length; i++) {
         if (specialDays[i].month === d.getMonth() && specialDays[i].date === d.getDate()) {
             return 1;
@@ -66,7 +70,7 @@ function dayType() {
 }
 
 function loadTime() {
-    d = new Date();
+    //d = new Date();
     // Adjusts into AM and PM time
     var hr = ((d.getHours() + 11) % 12 + 1);
     var sufx = (d.getHours() >= 12) ? 'PM' : 'AM';
@@ -78,7 +82,7 @@ function loadTime() {
 function loadDate() {
     // Dictionary for text-based date
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    //var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     // Outputs to HTML
     descText = days[d.getDay()];
@@ -106,6 +110,7 @@ function CalDay(month, date) {
 
 // Updates the clock messages
 function update() {
+	var i = 0;
     // Stores the dayType
     var type = dayType();
     // Debug ***
@@ -144,17 +149,17 @@ function update() {
                     normalDay(currentSchedule[i].title, currentSchedule[i].endRaw - parseRaw(), currentSchedule[i + 2].title, currentSchedule[i + 2].startRaw - parseRaw());
                 }
             }
+			
             if (parseRaw() > currentSchedule[currentSchedule.length - 1].endRaw) {
                 showTime = true;
                 document.getElementById("class-info").innerHTML = "";
                 document.getElementById("schedule-info").innerHTML = descText + "<b> ⋅ Have a nice day!</b>";
             }
         }
-    } else {
     }
     if (showTime) {
         document.getElementById("hrs").style.display = "block";
-        rawTime = parseRaw();
+        var rawTime = parseRaw();
         document.documentElement.style.setProperty('--timer-hours', "'" + toHrs(rawTime).toLocaleString('en-US', {
             minimumIntegerDigits: 2,
             useGrouping: false
@@ -300,10 +305,10 @@ function beforeSchool(title, time) {
 }
 
 function thisWeekend() {
-    for (d = 0; d < 7; d++) {
-        var result = new Date();
-        result.setDate(result.getDate() + d);
-        for (i = 0; i < noClassSats.length; i++) {
+    for (var addDay = 0; addDay < 7; addDay++) {
+        var result = d;
+        result.setDate(result.getDate() + addDay);
+        for (var i = 0; i < noClassSats.length; i++) {
             if (noClassSats[i].month === result.getMonth() && noClassSats[i].date === result.getDate()) {
                 return "<b> ⋅ No-Class Weekend</b>";
             }
@@ -348,7 +353,8 @@ function toSecs(raw) {
     return (raw % 60);
 }
 
-// Converts raw time format to a parsed time string
+// Converts raw time format to a parsed time string (DEPRECATED)
+/*
 function rawToString(raw) {
     var output = "";
 
@@ -391,15 +397,33 @@ function rawToString(raw) {
     }
     return output;
 }
+*/
 
 window.addEventListener('load', onLoad);
 
 function onLoad() {
-    d = new Date();
+    //d = new Date();
     loadTime();
     loadDate();
     update();
     weekendText = thisWeekend();
+}
+
+//Some code off a website to check cookies
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return unescape(c.substring(name.length, c.length));
+    }
+  }
+  return "";
 }
 
 setInterval(loadTime, 1000);
