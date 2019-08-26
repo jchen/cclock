@@ -6,7 +6,7 @@ Last updated 25 August 2019
 
 // Gets the current date and time
 //var d = new Date();
-var d = new Date(2019,8,26,14,30,7,0);
+var d = new Date(2019,8,26,14,30,1,0);
 // console.log(" *** d.getDate() " + d.getDate());
 // console.log(" *** d.getMonth() " + d.getMonth());
 // console.log(" *** dayType noClassSats" + i);
@@ -188,7 +188,7 @@ function update() {
 function getSchedule() {
     // console.log(" *** d.getDate() " + d.getDay());
     var weekday = d.getDay();
-
+	
     // Defines the currentSchedule array
     var currentSchedule = [];
 
@@ -217,7 +217,7 @@ function getSchedule() {
         currentSchedule[0] = new Period("Period 1", 8, 30, 9, 10);
         currentSchedule[1] = new Period("→ Period 2", 9, 10, 9, 15);
         currentSchedule[2] = new Period("Period 2", 9, 15, 9, 55);
-        currentSchedule[3] = new Period("Passing Period", 9, 55, 10, 0);
+        currentSchedule[3] = new Period("→ Auditorium", 9, 55, 10, 0);
         currentSchedule[4] = new Period("Auditorium", 10, 0, 10, 35);
         currentSchedule[5] = new Period("→ Period 3", 10, 35, 10, 40);
         currentSchedule[6] = new Period("Period 3", 10, 40, 11, 20);
@@ -258,7 +258,8 @@ function getSchedule() {
     } else {
         noClasses();
     }
-    return currentSchedule;
+	
+	return cookieCheck(currentSchedule);
 }
 
 function specialSchedule() // <- What to print during special schedules
@@ -409,6 +410,9 @@ function onLoad() {
     weekendText = thisWeekend();
 }
 
+// Below Code from Nicholas Lorentzen '20
+//This code was added to add the functionality of inputting a schedule
+
 //Some code off a website to check cookies
 function getCookie(cname) {
   var name = cname + "=";
@@ -424,6 +428,34 @@ function getCookie(cname) {
     }
   }
   return "";
+}
+
+function cookieCheck(scheduleToCheck)
+{
+	var cookieAbbrev = ["m", "t", "w", "y", "f", "s"];
+	var currentAbbrev = cookieAbbrev[d.getDay()];
+	
+	for(var i = 0; i < scheduleToCheck.length; i++){
+		var currentPeriod = scheduleToCheck[i];
+		var currentPeriodName = currentPeriod.title;
+		var addArrow = false;
+		if(currentPeriodName.includes("→")){
+			addArrow = true;
+		}
+		if(currentPeriodName.includes("Period")){
+			var numIdx = 7;
+			if(addArrow) {numIdx = 9;}
+			var currentPeriodNum = parseInt(currentPeriodName.charAt(numIdx));
+			if(getCookie(currentAbbrev + currentPeriodNum))
+			{
+				currentPeriodName = getCookie(currentAbbrev + currentPeriodNum);
+				if(addArrow){currentPeriodName = "→ " + currentPeriodName;}
+			}
+			currentPeriod.title = currentPeriodName;
+			scheduleToCheck[i] = currentPeriod;
+		}
+	}
+	return scheduleToCheck;
 }
 
 setInterval(loadTime, 1000);
