@@ -433,7 +433,7 @@ function getCookie(cname) {
 function cookieCheck(scheduleToCheck)
 {
 	var cookieAbbrev = ["m", "t", "w", "y", "f", "s"];
-	var currentAbbrev = cookieAbbrev[d.getDay()];
+	var currentAbbrev = cookieAbbrev[d.getDay() - 1];
 	
 	for(var i = 0; i < scheduleToCheck.length; i++){
 		var currentPeriod = scheduleToCheck[i];

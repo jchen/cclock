@@ -9,7 +9,7 @@ var boiyardee = [];
 function addCookie(cookname)
 {
 	boiyardee.push(cookname);
-	document.cookie = cookname + ";domain=ekkoing.github.io;max-age=31536000";
+	document.cookie = cookname + ";domain=ekkoing.github.io;max-age=31536000;path=\";
 }
 
 function bakeCookies(recipe)
@@ -22,8 +22,8 @@ function putCookie()
 	var classes = ["m1","m2","m3","m4","m5","m6","m7","m8","t1","t2","t3","t4","t5","t6","t7","t8","w1","w2","w3","w4","y1","y2","y3","y4","y5","y6","y7","y8","f1","f2","f3","f4","f5","f6","f7","f8","s1","s2","s3","s4"];
 
 	classes.forEach(bakeCookies);
-	console.log (boiyardee.join(";") + ";domain=ekkoing.github.io;max-age=31536000");
-	document.cookie = boiyardee.join(";") + ";domain=ekkoing.github.io;max-age=31536000";
+	console.log (boiyardee.join(";") + ";domain=ekkoing.github.io;max-age=31536000;path=\");
+	document.cookie = boiyardee.join(";") + ";domain=ekkoing.github.io;max-age=31536000;path=\";
 	return true;
 }
 
@@ -65,6 +65,6 @@ function getCookie(cname) {
 
 function updateScheduler()
 {
-	document.cookie = document.getElementById("pasteCode").value + ";domain=ekkoing.github.io;max-age=31536000";
+	document.cookie = document.getElementById("pasteCode").value + ";domain=ekkoing.github.io;max-age=31536000;path=\";
 	alert(document.cookie);
 }
