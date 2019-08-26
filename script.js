@@ -1,19 +1,19 @@
 /*
 Controller for clock/time webapp
 Nicholas Lorentzen, Jiahua Chen, based off Eric Li's original design
-Last updated 25 August 2019
+Last updated 26 August 2019
 */
 
 // Gets the current date and time
-//var d = new Date();
-var d = new Date(2019,8,26,14,30,1,0);
+var d = new Date();
+//var d = new Date(2019,8,26,14,30,1,0);
 // console.log(" *** d.getDate() " + d.getDate());
 // console.log(" *** d.getMonth() " + d.getMonth());
 // console.log(" *** dayType noClassSats" + i);
 
 // Updates the date and time
 function updateD() {
-    //d = new Date();
+    d = new Date();
 }
 
 var showTime = true;
