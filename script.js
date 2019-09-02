@@ -408,6 +408,7 @@ function onLoad() {
     loadDate();
     update();
     weekendText = thisWeekend();
+	document.getElementById("schedule-message").style.display = "block";
 }
 
 // Below Code from Nicholas Lorentzen '20

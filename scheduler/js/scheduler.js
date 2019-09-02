@@ -29,9 +29,9 @@ function putCookie()
 
 function exitScheduler()
 {
-	putCookie();
-	//alert("Cookies Set (Copy this for another browser): " + unescape(document.cookie));
-	//window.location.replace("https://ekkoing.github.io/cclock");
+	putCookie();	
+	alert("Schedule Updated!");
+	window.location.href("https://ekkoing.github.io/cclock");
 }
 
 function cookiesAlert()
