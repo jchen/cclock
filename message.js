@@ -8,7 +8,7 @@ Last updated 6 July 2019
 window.addEventListener('load', loadMessage);
 
 // Loads a series of messages and quotes
-var message = ["Have a great summer! "]; // <- Message goes here!
+var message = ["Welcome Back!"]; // <- Message goes here!
 var quotes = [
     {
         quote: "Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.",
@@ -109,11 +109,9 @@ var quotes = [
 ];  // <- Quotes go here
 
 function loadMessage() {
-    if (message.length !== 0) {
+    if (!(message === "")) {
         document.getElementById("message").innerHTML = message[0];
         document.getElementById("message-widget").style.display = "block";
-    } else {
-
     }
     var idx = Math.floor(Math.random() * quotes.length);
     // var idx = 5; // <- Clock quote

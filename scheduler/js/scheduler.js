@@ -19,7 +19,7 @@ function bakeCookies(recipe)
 
 function putCookie()
 {
-	var classes = ["m1","m2","m3","m4","m5","m6","m7","m8","t1","t2","t3","t4","t5","t6","t7","t8","w1","w2","w3","w4","y1","y2","y3","y4","y5","y6","y7","y8","f1","f2","f3","f4","f5","f6","f7","f8","s1","s2","s3","s4"];
+	var classes = ["m1","m2","m3","m4","m5","m6","m7","m8","t1","t2","t3","t4","t5","t6","t7","t8","w1","w2","w3","w4","y1","y2","y3","y4","y5","y6","y7","y8","f1","f2","f3","f4","f5","f6","f7","f8","s1","s2","s3","s4","name"];
 
 	classes.forEach(bakeCookies);
 	console.log (boiyardee.join(";") + ";domain=ekkoing.github.io;max-age=31536000;path=/");
@@ -36,7 +36,7 @@ function exitScheduler()
 
 function cookiesAlert()
 {
-	window.alert("(STILL IN TESTING) Welcome to the scheduler! In order to use this service you will need cookies enabled. - Nicholas Lorentzen")
+	window.alert("Welcome to the scheduler! In order to use this service you will need cookies enabled. Note that any data entered here cannot be read from any other computer and exists purely on your device. This means that all data must be entered on each device separately until I come up with a more elegant solution - Nicholas Lorentzen '20")
 	var classes = ["m1","m2","m3","m4","m5","m6","m7","m8","t1","t2","t3","t4","t5","t6","t7","t8","w1","w2","w3","w4","y1","y2","y3","y4","y5","y6","y7","y8","f1","f2","f3","f4","f5","f6","f7","f8","s1","s2","s3","s4"];
 	
 	classes.forEach(fillTable);
