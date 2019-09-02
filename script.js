@@ -24,10 +24,10 @@ var weekendText = "";
 
 // Defines the special days
 var onbreak = false;
-var specialDays = [new CalDay(3, 8), new CalDay(4, 25)]; // <- For special event days
-var noClassSats = [new CalDay(4, 20), new CalDay(5, 4), new CalDay(5, 18)]; // <- For days without Saturday classes
-var noClassDays = [new CalDay(4, 22), new CalDay(5, 18), new CalDay(5, 27), new CalDay(6, 1)]; // <- For days without classes, or breaks
-var holidayDays = []; // <- For holidays
+var specialDays = [new CalDay(9, 2), new CalDay(10, 12), new CalDay(11, 23)]; // <- For special event days
+var noClassSats = [new CalDay(9, 14), new CalDay(10, 5), new CalDay(11, 2), new CalDay(12, 7)]; // <- For days without Saturday classes
+var noClassDays = [new CalDay(5, 27), new CalDay(6, 1)]; // <- For days without classes, or breaks
+var holidayDays = [new CalDay(10, 14), new CalDay(10, 15), new CalDay(12, 2)]; // <- For holidays
 
 
 function dayType() {
@@ -265,7 +265,7 @@ function getSchedule() {
 function specialSchedule() // <- What to print during special schedules
 {
     document.getElementById("class-info").innerHTML = "<i>Special Schedule</i>";
-    document.getElementById("schedule-info").innerHTML = "Please consult your planner for details.";
+    document.getElementById("schedule-info").innerHTML = "Please consult your email for details.";
 }
 
 function noClassSat() // <- What to print for no-class Saturdays
@@ -458,6 +458,8 @@ function cookieCheck(scheduleToCheck)
 	}
 	return scheduleToCheck;
 }
+
+//Adds Schedule Preview and Custom Messages
 
 setInterval(loadTime, 1000);
 setInterval(loadDate, 1000);
