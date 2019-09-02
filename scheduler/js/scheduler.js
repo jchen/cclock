@@ -31,7 +31,7 @@ function exitScheduler()
 {
 	putCookie();	
 	alert("Schedule Updated!");
-	window.location.href("https://ekkoing.github.io/cclock");
+	window.location.href = "https://ekkoing.github.io/cclock";
 }
 
 function cookiesAlert()
