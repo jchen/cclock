@@ -16,14 +16,15 @@ function addCookie(cookname)
 
 function bakeCookies(recipe)
 {
+	var cookieValue = document.getElementById(recipe).value
 	if (recipe.includes(5) || recipe.includes(6)){
-		recipe = "Lunch";
+		cookieValue = "Lunch";
 	}
-	if (recipe === "" && !recipe.includes("name")){
-		recipe = "Free";
+	if (cookieValue === "" && !recipe.includes("name")){
+		cookieValue = "Free";
 	}
 	
-	addCookie(recipe + "=" + escape(document.getElementById(recipe).value));
+	addCookie(recipe + "=" + escape(cookieValue));
 }
 
 function putCookie()
