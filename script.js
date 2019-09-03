@@ -19,15 +19,19 @@ function updateD() {
 var showTime = true;
 var descText;
 var weekendText = "";
+var mainMessage = "";
 
 // Gets the classification of the date, and returns 0 if it is a normal day. Also contains dictionaries for special days.
 
 // Defines the special days
 var onbreak = false;
-var specialDays = [new CalDay(9, 2), new CalDay(10, 12), new CalDay(11, 23)]; // <- For special event days
+var specialDays = [new CalDay(10, 12), new CalDay(11, 23)]; // <- For special event days
 var noClassSats = [new CalDay(9, 14), new CalDay(10, 5), new CalDay(11, 2), new CalDay(12, 7)]; // <- For days without Saturday classes
 var noClassDays = [new CalDay(5, 27), new CalDay(6, 1)]; // <- For days without classes, or breaks
 var holidayDays = [new CalDay(10, 14), new CalDay(10, 15), new CalDay(12, 2)]; // <- For holidays
+
+//What the current period's array location is
+var currentArrayLoc = 0;
 
 
 function dayType() {
@@ -129,7 +133,7 @@ function update() {
     } else if (type === 0) {
         // console.log(" *** Is normal day");
         // Gets today's schedule
-        var currentSchedule = getSchedule();
+        var currentSchedule = getSchedule(d.getDay());
         // console.log(" *** currentSchedule " + currentSchedule.length);
 
         // Checks which Period it currently is
@@ -143,6 +147,7 @@ function update() {
 
             if (currentSchedule[i].startRaw < parseRaw() && parseRaw() < currentSchedule[i].endRaw) {
                 // console.log(" *** currentSchedule[i].startRaw " + currentSchedule[i].startRaw);
+				currentArrayLoc = i;
                 if (currentSchedule[i].title === "Passing Period") {
                     normalDay(currentSchedule[i].title, currentSchedule[i].endRaw - parseRaw(), currentSchedule[i + 1].title, currentSchedule[i + 1].startRaw - parseRaw());
                 } else {
@@ -151,11 +156,13 @@ function update() {
             }
 			
             if (parseRaw() > currentSchedule[currentSchedule.length - 1].endRaw) {
+				currentArrayLoc = currentSchedule.length + 1;
                 showTime = true;
                 document.getElementById("class-info").innerHTML = "";
                 document.getElementById("schedule-info").innerHTML = descText + "<b> ⋅ Have a nice day!</b>";
             }
         }
+		previewTableCreate();
     }
     if (showTime) {
         document.getElementById("hrs").style.display = "block";
@@ -185,9 +192,8 @@ function update() {
 }
 
 // Gets the right schedule for a regular class day
-function getSchedule() {
+function getSchedule(weekday) {
     // console.log(" *** d.getDate() " + d.getDay());
-    var weekday = d.getDay();
 	
     // Defines the currentSchedule array
     var currentSchedule = [];
@@ -197,7 +203,7 @@ function getSchedule() {
         currentSchedule[0] = new Period("Period 1", 8, 30, 9, 15);
         currentSchedule[1] = new Period("→ Period 2", 9, 15, 9, 20);
         currentSchedule[2] = new Period("Period 2", 9, 20, 10, 5);
-        currentSchedule[3] = new Period("Passing Period", 10, 5, 10, 10);
+        currentSchedule[3] = new Period("→ Chapel / Class Meeting", 10, 5, 10, 10);
         currentSchedule[4] = new Period("Chapel / Class Meeting", 10, 10, 10, 35);
         currentSchedule[5] = new Period("→ Period 3", 10, 35, 10, 40);
         currentSchedule[6] = new Period("Period 3", 10, 40, 11, 20);
@@ -259,7 +265,7 @@ function getSchedule() {
         noClasses();
     }
 	
-	return cookieCheck(currentSchedule);
+	return cookieCheck(currentSchedule, weekday);
 }
 
 function specialSchedule() // <- What to print during special schedules
@@ -300,7 +306,7 @@ function normalDay(nowTitle, nowDiff, nextTitle, nextDiff) // <- What to print d
 }
 
 function beforeSchool(title, time) {
-    document.getElementById("class-info").innerHTML = "→ " + title;
+    document.getElementById("class-info").innerHTML = title;
     document.getElementById("schedule-info").innerHTML = descText + weekendText;
     printTime(time);
 }
@@ -431,10 +437,10 @@ function getCookie(cname) {
   return "";
 }
 
-function cookieCheck(scheduleToCheck)
+function cookieCheck(scheduleToCheck, weekday)
 {
 	var cookieAbbrev = ["m", "t", "w", "y", "f", "s"];
-	var currentAbbrev = cookieAbbrev[d.getDay() - 1];
+	var currentAbbrev = cookieAbbrev[weekday - 1];
 	
 	for(var i = 0; i < scheduleToCheck.length; i++){
 		var currentPeriod = scheduleToCheck[i];
@@ -461,8 +467,129 @@ function cookieCheck(scheduleToCheck)
 }
 
 //Adds Schedule Preview and Custom Messages
+function previewTableCreate() {
+	if(document.cookie === "") {return;}
+	var myArrayLoc = currentArrayLoc;
+	var currentSchedule = getSchedule(d.getDay());
+	var nextDay = false;
+	if(myArrayLoc > currentSchedule.length){
+		if(d.getDay() + 1 == 7 || d.getDay() + 1 == 0){
+			return;
+		}
+		currentSchedule = getSchedule(d.getDay() + 1);
+		myArrayLoc = -1;
+		nextDay = true;
+	}
+	var openingMessage = "";
+	if(nextDay){
+		openingMessage = "Here's a preview of your schedule tomorrow:";
+	} else if(currentArrayLoc > currentSchedule.length / 2){
+		openingMessage = "Here's what the rest of your day looks like:";
+	} else {
+		openingMessage = "Here's your schedule for today:"
+	}
+	
+	document.getElementById("opening-message").innerHTML = openingMessage;
+	
+	removeElement("schedule-preview");
+	var widget = document.getElementById("preview-table");
+	var tbl = document.createElement('table');
+	tbl.style.width = '100%';
+	tbl.setAttribute("align", "center");
+	tbl.setAttribute("id","schedule-preview")
+	var tbdy = document.createElement('tbody');
+	var tr = document.createElement('tr');
+	tr.style.textDecoration = "underline";
+	for (var j = 0; j < 2; j++) {
+		var th = document.createElement("th");
+		th.setAttribute("id","t"+j)
+		th.style.fontWeight = "600";
+		if (j === 0) {th.innerHTML= "Time Till";} else {th.innerHTML= "Event";}
+		tr.appendChild(th);
+	}
+	tbdy.appendChild(tr);
+	
+	for(var i = myArrayLoc + 1; i < currentSchedule.length - 2; i++) {
+		var currentPeriod = currentSchedule[i];
+		if(!(currentPeriod.title.includes("→") || currentPeriod.title.includes("Bell"))){
+			tr = document.createElement('tr');
+			for (j = 0; j < 2; j++) {
+				var td = document.createElement('td');
+				td.setAttribute("id","td"+i+j);
+				td.setAttribute("align","center");
+				
+				if(j == 0){
+					if (nextDay){
+						currentPeriod.startRaw = currentPeriod.startRaw + (3600 * 24);
+					}
+					var minsToClass = toMins(currentPeriod.startRaw - parseRaw());
+					if (minsToClass < 10) {
+						minsToClass = "0" + minsToClass; 
+						if (minsToClass < 1) { 
+							minsToClass = "01";
+						}
+					} 
+					var hrsToClass = toHrs(currentPeriod.startRaw- parseRaw());
+					if (hrsToClass < 1){
+						hrsToClass = "0";
+					}
+					td.innerHTML = "T- " + hrsToClass + ":" + minsToClass;
+				} else {
+					td.innerHTML = currentPeriod.title;
+				}
+				tr.appendChild(td);
+			}
+			tbdy.appendChild(tr);
+		}
+    }
+	tbl.appendChild(tbdy);
+	widget.appendChild(tbl);
+}
+
+function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+	if (element){
+		element.parentNode.removeChild(element);
+	}
+}
+
+function updateMainMessage()
+{
+	if(d.getMonth() === 8 && d.getDay() < 2){
+		mainMessage = "Welcome Back!";
+		if(getCookie("name") != ""){
+			mainMessage = "Welcome Back " + getCookie("name") +"!";
+		}
+	}else{
+		if(d.getHours() <= 5 || d.getHours() > 8){
+			mainMessage = "Goodnight...";
+		}else if (d.getHours() < 12 || d.getHours() >= 8){
+			mainMessage = "Good Morning!";
+			if(getCookie("name") != ""){
+				mainMessage = "Good Morning " + getCookie("name") +"!";
+			}
+		}else if (d.getHours() < 17 || d.getHours() >= 12){
+			mainMessage = "Good Afternoon!";
+			if(getCookie("name") != ""){
+				mainMessage = "Good Afternoon " + getCookie("name") +"!";
+			}
+		}else{
+			mainMessage = "Good Evening!";
+			if(getCookie("name") != ""){
+				mainMessage = "Good Evening " + getCookie("name") +"!";
+			}
+		}
+	}
+	
+	if (!(mainMessage === "")) {
+		document.getElementById("message").innerHTML = mainMessage;
+		document.getElementById("message-widget").style.display = "block";
+    }
+}
 
 setInterval(loadTime, 1000);
 setInterval(loadDate, 1000);
 setInterval(updateD, 1000);
 setInterval(update, 1000);
+setInterval(updateMainMessage, 1000);

@@ -109,10 +109,6 @@ var quotes = [
 ];  // <- Quotes go here
 
 function loadMessage() {
-    if (!(message === "")) {
-        document.getElementById("message").innerHTML = message[0];
-        document.getElementById("message-widget").style.display = "block";
-    }
     var idx = Math.floor(Math.random() * quotes.length);
     // var idx = 5; // <- Clock quote
     document.getElementById("quote").innerHTML = quotes[idx].quote;
