@@ -17,7 +17,7 @@ function addCookie(cookname)
 function bakeCookies(recipe)
 {
 	var cookieValue = document.getElementById(recipe).value
-	if (recipe.includes(5) || recipe.includes(6)){
+	if ((recipe.includes(5) || recipe.includes(6)) && cookieValue === ""){
 		cookieValue = "Lunch";
 	}
 	if (cookieValue === "" && !recipe.includes("name")){
