@@ -562,14 +562,14 @@ function updateMainMessage()
 			mainMessage = "Welcome Back " + getCookie("name") +"!";
 		}
 	}else{
-		if(d.getHours() <= 5 || d.getHours() > 8){
+		if(d.getHours() <= 5 && d.getHours() > 8){
 			mainMessage = "Goodnight...";
-		}else if (d.getHours() < 12 || d.getHours() >= 8){
+		}else if (d.getHours() < 12 && d.getHours() >= 8){
 			mainMessage = "Good Morning!";
 			if(getCookie("name") != ""){
 				mainMessage = "Good Morning " + getCookie("name") +"!";
 			}
-		}else if (d.getHours() < 17 || d.getHours() >= 12){
+		}else if (d.getHours() < 17 && d.getHours() >= 12){
 			mainMessage = "Good Afternoon!";
 			if(getCookie("name") != ""){
 				mainMessage = "Good Afternoon " + getCookie("name") +"!";
