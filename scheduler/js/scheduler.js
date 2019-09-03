@@ -9,6 +9,9 @@ var classes = ["m1","m2","m3","m4","m5","m6","m7","m8","t1","t2","t3","t4","t5",
 
 function addCookie(cookname)
 {
+	if (cookname === "" && !cookname.includes("name")){
+		cookname = "Free";
+	}
 	boiyardee.push(cookname);
 	document.cookie = cookname + ";domain=ekkoing.github.io;max-age=31536000;path=/";
 }
