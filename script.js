@@ -562,9 +562,9 @@ function updateMainMessage()
 			mainMessage = "Welcome Back " + getCookie("name") +"!";
 		}
 	}else{
-		if(d.getHours() <= 5 && d.getHours() > 8){
+		if(d.getHours() <= 5 && d.getHours() > 20){
 			mainMessage = "Goodnight...";
-		}else if (d.getHours() < 12 && d.getHours() >= 8){
+		}else if (d.getHours() < 12 && d.getHours() >= 5){
 			mainMessage = "Good Morning!";
 			if(getCookie("name") != ""){
 				mainMessage = "Good Morning " + getCookie("name") +"!";
