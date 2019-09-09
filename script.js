@@ -468,12 +468,12 @@ function cookieCheck(scheduleToCheck, weekday)
 
 //Adds Schedule Preview and Custom Messages
 function previewTableCreate() {
-	if(document.cookie === "") {return;}
+	//if(document.cookie === "") {return;}
 	var myArrayLoc = currentArrayLoc;
 	var currentSchedule = getSchedule(d.getDay());
 	var nextDay = false;
-	if(myArrayLoc > currentSchedule.length){
-		if(d.getDay() + 1 == 7 || d.getDay() + 1 == 0){
+	if(myArrayLoc > currentSchedule.length || d.getDay() === 0){
+		if(d.getDay() + 1 == 7){
 			return;
 		}
 		currentSchedule = getSchedule(d.getDay() + 1);
