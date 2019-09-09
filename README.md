@@ -49,13 +49,7 @@ animation: Gradient 15s ease infinite;
 ## Customization
 
 ### Add your own schedule
-`script.js` is the controller for the clock on the page. It's simple but naïve –– the static page requires static changes to the code. For now, this means that you need to go into the actual functions to change the schedule, and the schedule unfortunately is not dynamically loading. 
-
-`getSchedule()` gets the schedules of the day and outputs the correct block/period. `weekday` starts on Sunday (0), thus making Monday 1, and so on. You want to define and fill the array currentSchedule to indicate the period the specific weekday is following: 
-```javascript
-currentSchedule[0] = new Period("Period 1", 8, 30, 9, 15);
-```
-Where `new Period("Period 1", 8, 30, 9, 15)` means that the first period of the day (in `currentSchedule[0]`) is called "Period 1", and it starts at 8:30 AM and ends at 9:15 AM. The rest of the periods, and the rest of the days are defined similarly. 
+//NEEDS TO BE REWRITTEN TO SPECIFY 2 WAYS OF CUSTOMIZATION
 
 ### Special schedules
 At the start of the document, there are definitions for special days. On some occasions, events or special schedules might disrupt the normal schedule. This is where it should be defined and noted. Note that `new CalDay(3, 8)` means 8th of March. 
@@ -111,4 +105,4 @@ The clock will also display a random inspirational quote whenever you load it, l
 ## Thanks
 The design of version 2 was inspired by [Decount](https://decount.co/) (and this design was reimplemented into Decount), and the original source code was adapted from [Eric Li's Network Clock](https://github.com/eli8527/Network-Clock). 
 
-CClock © 2019, Jiahua Chen. Released under the [MIT License](https://mit-license.org/).
+CClock © 2019, [Jiahua Chen](github.com/jiahuac) & [Nicholas Lorentzen](github.com/EKKOING). Released under the [MIT License](https://mit-license.org/).

@@ -10,8 +10,7 @@
 
     <!-- Loads external styles/fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap">
 
     <!-- Loads stylesheet -->
     <link rel="stylesheet" href="./style.css">
@@ -21,8 +20,8 @@
 <body scroll="no" style="overflow: hidden">
 <!-- Darksky Weather Widget -->
 <div class="weather">
-    <script type='text/javascript'
-            src='https://darksky.net/widget/default-small/41.9474,-73.4464/us12/en.js?width=90%&height=100&title=Full Forecast&textColor=ffffff&bgColor=transparent&transparency=true&skyColor=undefined&fontFamily=Default&customFont=&units=us'></script>
+    <script type="text/javascript"
+            src="https://darksky.net/widget/default-small/41.9474,-73.4464/us12/en.js?width=90%&height=100&title=Full Forecast&textColor=ffffff&bgColor=transparent&transparency=true&skyColor=undefined&fontFamily=Default&customFont=&units=us"></script>
 </div>
 
 <!-- Clock Element (top left) -->
@@ -63,9 +62,9 @@
 </div>
 
 <div id="info">
-    <span id="info-text">Eric Li ’13, Jiahua Chen ’20   </span>
+    <span id="info-text">Eric Li ’13, Jiahua Chen ’20, Nicholas Lorentzen ’20 V1.13</span>
     <i id="info-circle" class="fas fa-info-circle"></i>
-    <a href="mailto:jchen20@hotchkiss.org"><i id="bug-report" class="fas fa-bug"></i></a>
+    <a href="mailto:nlorentzen@hotchkiss.org"><i id="bug-report" class="fas fa-bug"></i></a>
 </div>
 
 <div id="widgets-bar">
@@ -75,6 +74,11 @@
     <div class="widget" id="quote-widget" style="display: none;">
         <p id="quote"></p>
         <p align="right" id="speaker" style="font-weight: 700;"></p>
+    </div>
+    <div class="widget" id="schedule-message" style="display: none;">
+		<p align="center" style="color: #FFFFFF;"><a style="color: white" href="scheduler/">Input A Schedule Here!</a></p>
+        <p id="opening-message" align="center" style="font-weight: 700; margin-bottom: 5px; margin-top: 10px;"></p>
+		<div id="preview-table"></div>
     </div>
 </div>
 

@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* Body style */
+body {
+    /* Font */
+    font-family: 'Open Sans', sans-serif;
+    min-height: 300px;
+    min-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: #20265A;
+    /* Animated gradient background */
+    /*background: linear-gradient(-30deg, #111E6C, #0E4D92, #0F52BA, #003152);*/
+    background-size: 1000% 1000%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+    z-index: -50;
+}
