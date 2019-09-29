@@ -8,7 +8,7 @@ Last updated 6 July 2019
 window.addEventListener('load', loadMessage);
 
 // Loads a series of messages and quotes
-var message = ["Have a great summer! "]; // <- Message goes here!
+var message = ["CClock is a proof of concept and is not currently live! Visit Decount for a working clock! "]; // <- Message goes here!
 var quotes = [
     {
         quote: "Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.",
