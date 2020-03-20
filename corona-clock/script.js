@@ -195,25 +195,28 @@ function update() {
 function getSchedule(weekday) {
     // console.log(" *** d.getDate() " + d.getDay());
 	
-    // Defines the currentSchedule array
-    var currentSchedule = [];
+    // Defines the schedule array
+    var schedule = [];
 
     // Assigns class schedules for weekday scenarios
     if (weekday >= 1 && weekday <= 5) {
-        currentSchedule[0] = new Period("1", 9, 30, 10, 15);
-        currentSchedule[1] = new Period("→ 2", 10, 15, 10, 25);
-        currentSchedule[2] = new Period("2", 10, 25, 11, 10);
-        currentSchedule[3] = new Period("→ 3", 11, 10, 11, 20);
-        currentSchedule[4] = new Period("3", 10, 20, 12, 5);
-        currentSchedule[5] = new Period("→ 4", 12, 5, 12, 15);
-        currentSchedule[6] = new Period("4", 12, 15, 12, 35);
-        currentSchedule[7] = new Period("5", 12, 35, 12, 35);
-        currentSchedule[8] = new Period("5", 12, 35, 12, 35);
+        schedule[0] = new Period("1", 9, 30, 10, 15);
+        schedule[1] = new Period("→ 2", 10, 15, 10, 25);
+        schedule[2] = new Period("2", 10, 25, 11, 10);
+        schedule[3] = new Period("→ 3", 11, 10, 11, 20);
+        schedule[4] = new Period("3", 11, 20, 12, 5);
+        schedule[5] = new Period("→ 4", 12, 5, 12, 15);
+        schedule[6] = new Period("4", 12, 15, 12, 35);
+        schedule[7] = new Period("5", 12, 35, 12, 35);
+        schedule[8] = new Period("5", 12, 35, 12, 35);
     } else {
         noClasses();
     }
 	
-	return cookieCheck(currentSchedule, weekday);
+    //return cookieCheck(schedule, weekday);
+    
+    //Cookie Check Copy
+
 }
 
 function specialSchedule() // <- What to print during special schedules
@@ -435,17 +438,16 @@ function cookieCheck(scheduleToCheck, weekday)
             currentCookie = getCookie(cookieAbbrev[currentPeriodNumber].substr(0,1) + "6");
         }
 
-        if (currentCookie === "") {
+        currentPeriod.name = currentCookie;
+        if (currentPeriod.name === "") {
             currentPeriod.name = labels[currentPeriodNumber];
-        } else {
-            currentPeriod.name = currentCookie;
         }
 
         if (addArrow) {
             currentPeriod.name = "→ " + currentPeriod.name;
         }
 
-        scheduleToCheck[i] = currentPeriod;
+        scheduleToCheck[i].name = currentPeriod.name;
 
         /**
 		if(currentPeriodName.includes("Period")){
@@ -470,20 +472,20 @@ function cookieCheck(scheduleToCheck, weekday)
 function previewTableCreate() {
 	//if(document.cookie === "") {return;}
 	var myArrayLoc = currentArrayLoc;
-	var currentSchedule = getSchedule(d.getDay());
+	var previewSchedule = getSchedule(d.getDay());
 	var nextDay = false;
-	if(myArrayLoc > currentSchedule.length || d.getDay() === 0){
+	if(myArrayLoc > previewSchedule.length || d.getDay() === 0){
 		if(d.getDay() + 1 == 7){
 			return;
 		}
-		currentSchedule = getSchedule(d.getDay() + 1);
+		previewSchedule = getSchedule(d.getDay() + 1);
 		myArrayLoc = -1;
 		nextDay = true;
 	}
 	var openingMessage = "";
 	if(nextDay){
 		openingMessage = "Here's a preview of your schedule tomorrow:";
-	} else if(currentArrayLoc > currentSchedule.length / 2){
+	} else if(currentArrayLoc > previewSchedule.length / 2){
 		openingMessage = "Here's what the rest of your day looks like:";
 	} else {
 		openingMessage = "Here's your schedule for today:"
@@ -509,8 +511,8 @@ function previewTableCreate() {
 	}
 	tbdy.appendChild(tr);
 	
-	for(var i = myArrayLoc + 1; i < currentSchedule.length - 2; i++) {
-		var currentPeriod = currentSchedule[i];
+	for(var i = myArrayLoc + 1; i < previewSchedule.length - 2; i++) {
+		var currentPeriod = previewSchedule[i];
 		if(!(currentPeriod.title.includes("→") || currentPeriod.title.includes("Bell"))){
 			tr = document.createElement('tr');
 			for (j = 0; j < 2; j++) {
