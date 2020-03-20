@@ -2,7 +2,7 @@
 /*
 Scheduler for Hotchkiss Clock
 Nicholas Lorentzen
-Last updated 2019 04 15
+Last updated 2020 03 20
 */
 var boiyardee = [];
 var classes = ["m1","m2","m3","t5","t6","t7","t8","t3","s4","w2","y3","y5","y6","f1", "y1", "f8", "name", "timezone"];
