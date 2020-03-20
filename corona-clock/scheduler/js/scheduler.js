@@ -5,7 +5,7 @@ Nicholas Lorentzen
 Last updated 2019 04 15
 */
 var boiyardee = [];
-var classes = ["m1","m2","m3","m4","m5","m6","m7","m8","t1","t2","t3","t4","t5","t6","t7","t8","w1","w2","w3","w4","y1","y2","y3","y4","y5","y6","y7","y8","f1","f2","f3","f4","f5","f6","f7","f8","s1","s2","s3","s4","name"];
+var classes = ["m1","m2","m3","t5","t6","t7","t8","t3","s4","w2","y3","y5","y6","y8","f1", "name", "timezone"];
 
 function addCookie(cookname)
 {
@@ -29,7 +29,6 @@ function bakeCookies(recipe)
 
 function putCookie()
 {
-
 	classes.forEach(bakeCookies);
 	console.log (boiyardee.join(";") + ";domain=ekkoing.github.io;max-age=31536000;path=/");
 	document.cookie = boiyardee.join(";") + ";domain=ekkoing.github.io;max-age=31536000;path=/";
@@ -40,7 +39,7 @@ function exitScheduler()
 {
 	putCookie();	
 	alert("Schedule Updated!");
-	window.location.href = "https://ekkoing.github.io/cclock";
+	window.location.href = "https://ekkoing.github.io/cclock/corona-clock/scheduler";
 }
 
 function cookiesAlert()
