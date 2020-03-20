@@ -1,4 +1,4 @@
-# 🕒 CClock · ![version](https://img.shields.io/badge/version-2.1-yellowgreen.svg)
+# 🕒 CClock · ![version](https://img.shields.io/badge/version-2.2-yellowgreen.svg)
 
 **CClock** stands for *countdown clock*, or *class clock*. It is meant to count down the time left in each class block, and is also a reminder for the time remaining until the start of the next class block. CClock is fully customizable, adaptable, and works on all devices. Additionally, the simplest version of CClock (here) is fully static and only runs clientside. This means that CClock can be run from Github Pages or another static site host. 
 
@@ -105,4 +105,4 @@ The clock will also display a random inspirational quote whenever you load it, l
 ## Thanks
 The design of version 2 was inspired by [Decount](https://decount.co/) (and this design was reimplemented into Decount), and the original source code was adapted from [Eric Li's Network Clock](https://github.com/eli8527/Network-Clock). 
 
-CClock © 2019, [Jiahua Chen](github.com/jiahuac) & [Nicholas Lorentzen](github.com/EKKOING). Released under the [MIT License](https://mit-license.org/).
+CClock © 2020, [Nicholas Lorentzen](github.com/EKKOING). Released under the [MIT License](https://mit-license.org/).
