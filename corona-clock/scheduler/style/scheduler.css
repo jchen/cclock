@@ -9,8 +9,6 @@ body {
     min-height: 300px;
     min-width: 500px;
     display: flex;
-    align-items: center;
-    justify-content: left;
     color: #20265A;
     /* Animated gradient background */
     /*background: linear-gradient(-30deg, #111E6C, #0E4D92, #0F52BA, #003152);*/
@@ -20,3 +18,31 @@ body {
     animation: Gradient 15s ease infinite;
     z-index: -50;
 }
+
+.content {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+table {
+    margin: 30px;
+}
+
+#scheduler {
+    text-align: center;
+}
+
+#coronaschedule td {
+    border: 1px solid #20265A;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+#coronaschedule table {
+    width: 100%;
+    border: 1px solid #20265A;
+    border-collapse: collapse;
+}
+

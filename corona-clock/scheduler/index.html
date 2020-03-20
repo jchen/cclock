@@ -7,209 +7,258 @@
 <link href="style/scheduler.css" rel="stylesheet" type="text/css">
 </head>
 <body onLoad="cookiesAlert()">
-<form class="my-form" action="">
-	<table align="center" style="width:100">
-	  <tr>
-		<th>Scheduler</th>
-		<th>Monday</th>
-		<th>Tuesday</th>
-		<th>Wednesday</th>
-		<th>Thursday</th>
-		<th>Friday</th>
-		<th>Saturday</th>
-	  </tr>
-	  <tr>
-		<td>Period 1</td>
-		<td>
-		  <input type="text" id="m1" name="m1">
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  <input type="text" id="y1" name="y1">
-		</td>
-		<td>
-		  <input type="text" id="f1" name="f1">
-		</td>
-		<td>
-		  Not Held
-		</td>
-	  </tr>
-	  <tr>
-		<td>Period 2</td>
-		<td>
-		  <input type="text" id="m2" name="m2">
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  <input type="text" id="w2" name="w2">
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  Not Held
-		</td>
-	  </tr>
-	  <tr>
-		<td>Period 3</td>
-		<td>
-		  <input type="text" id="m3" name="m3">
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  <input type="text" id="y3" name="y3">
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  Not Held
-		</td>
-	  </tr>
-	  <tr>
-		<td>Period 4</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
- 		  Not Held
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  <input type="text" id="s4" name="s4">
-		</td>
+<div class="content">
+	<div id="scheduler">
+		<form class="my-form" action="">
+			<table style="width:100">
+			  <tr>
+				<th>Scheduler</th>
+				<th>Monday</th>
+				<th>Tuesday</th>
+				<th>Wednesday</th>
+				<th>Thursday</th>
+				<th>Friday</th>
+				<th>Saturday</th>
+			  </tr>
+			  <tr>
+				<td>Period 1</td>
+				<td>
+				  <input type="text" id="m1" name="m1">
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  <input type="text" id="y1" name="y1">
+				</td>
+				<td>
+				  <input type="text" id="f1" name="f1">
+				</td>
+				<td>
+				  Not Held
+				</td>
+			  </tr>
+			  <tr>
+				<td>Period 2</td>
+				<td>
+				  <input type="text" id="m2" name="m2">
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  <input type="text" id="w2" name="w2">
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  Not Held
+				</td>
+			  </tr>
+			  <tr>
+				<td>Period 3</td>
+				<td>
+				  <input type="text" id="m3" name="m3">
+				</td>
+				<td>
+				  <input type="text" id="t3" name="t3">
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  <input type="text" id="y3" name="y3">
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  Not Held
+				</td>
+			  </tr>
+			  <tr>
+				<td>Period 4</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				   Not Held
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  <input type="text" id="s4" name="s4">
+				</td>
+				
+			  </tr>
+			  <tr>
+				<td>Period 5A</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  <input type="text" id="t5" name="t5">
+				</td>
+				<td>
 		
-	  </tr>
-	  <tr>
-		<td>Period 5A</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  <input type="text" id="t5" name="t5">
-		</td>
-		<td>
-
-		</td>
-		<td>
-		  <input type="text" id="y5" name="y5">
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-
-		</td>
-	  </tr>
-	  <tr>
-		<td>Period 5B</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  <input type="text" id="t6" name="t6">
-		</td>
-		<td>
-
-		</td>
-		<td>
-		  <input type="text" id="y6" name="y6">
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-
-		</td>
-	  </tr>
-	  <tr>
-		<td>Period 6</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  <input type="text" id="t7" name="t7">
-		</td>
-		<td>
-		  <p style="color:#FFFFFF; font-size: 9px">Nicholas Lorentzen wrote this code</p>
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-
-		</td>
-	  </tr>
-	  <tr>
-		<td>Period 7</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  <input type="text" id="t8" name="t8">
-		</td>
-		<td>
-
-		</td>
-		<td>
-		  Not Held
-		</td>
-		<td>
-		  <input type="text" id="f8" name="f8">
-		</td>
-		<td>
-
-		</td>
-	  </tr>
-		<tr>
-			<td colspan="6">
-				<table align="center">
-					<tr>
-						<td>Name(Optional)</td>
-						<td>
-							<input type="text" id="name" name="name">
-						</td>
-						<td> Time Difference From EST (Ex China = 12 Cali = -3)</td>
-						<td>
-							<input type="number" id="timezone" name="timezone" value="0" step="1">
-						</td>
-
-					</tr>
-				</table>
-			</td>
-		</tr>
-	  <tr>
-		  <td colspan="7"><div style="text-align: center;"><input type="button" value="Submit" onClick="exitScheduler();"/></div></td>
-	  </tr>
-	</table>
-</form>
-<br>
-<br>
+				</td>
+				<td>
+				  <input type="text" id="y5" name="y5">
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+		
+				</td>
+			  </tr>
+			  <tr>
+				<td>Period 5B</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  <input type="text" id="t6" name="t6">
+				</td>
+				<td>
+		
+				</td>
+				<td>
+				  <input type="text" id="y6" name="y6">
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+		
+				</td>
+			  </tr>
+			  <tr>
+				<td>Period 6</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  <input type="text" id="t7" name="t7">
+				</td>
+				<td>
+				  <p style="color:#FFFFFF; font-size: 9px">Nicholas Lorentzen wrote this code</p>
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+		
+				</td>
+			  </tr>
+			  <tr>
+				<td>Period 7</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  <input type="text" id="t8" name="t8">
+				</td>
+				<td>
+		
+				</td>
+				<td>
+				  Not Held
+				</td>
+				<td>
+				  <input type="text" id="f8" name="f8">
+				</td>
+				<td>
+		
+				</td>
+			  </tr>
+				<tr>
+					<td colspan="6">
+						<table align="center">
+							<tr>
+								<td>Name(Optional)</td>
+								<td>
+									<input type="text" id="name" name="name">
+								</td>
+								<td> Time Difference From EST (Ex China = 12 Cali = -3)</td>
+								<td>
+									<input type="number" id="timezone" name="timezone" value="0" step="1">
+								</td>
+		
+							</tr>
+						</table>
+					</td>
+				</tr>
+			  <tr>
+				  <td colspan="7"><div style="text-align: center;"><input type="button" value="Update Schedule Preview" onClick="exitScheduler();"/></div></td>
+			  </tr>
+			</table>
+		</form>
+	</div>
+	<div id="coronaschedule">
+		<table align="center" style="width:100">
+			<tr>
+				<th>Time/Day</th>
+				<th>Monday</th>
+				<th>Tuesday</th>
+				<th>Wednesday</th>
+				<th>Thursday</th>
+				<th>Friday</th>
+			</tr>
+			<tr>
+				<td>9:30 - 10:15</td>
+				<td id="a1"></td>
+				<td id="a2"></td>
+				<td id="a3"></td>
+				<td id="a4"></td>
+				<td id="a5">HD 250</td>
+			</tr>
+			<tr>
+				<td>10:25 - 11:10</td>
+				<td id="b1"></td>
+				<td id="b2"></td>
+				<td id="b3"></td>
+				<td id="b4"></td>
+				<td id="b5"></td>
+			</tr>
+			<tr>
+				<td>11:20 - 12:05</td>
+				<td id="c1"></td>
+				<td id="c2"></td>
+				<td id="c3"></td>
+				<td id="c4"></td>
+				<td id="c5"></td>
+			</tr>
+			<tr>
+				<td>12:15 - 12:35</td>
+				<td id="d1">Community Time</td>
+				<td id="d2">Community Time</td>
+				<td id="d3">HD 150 & 550</td>
+				<td id="d4">Community Time</td>
+				<td id="d5">Community Time</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<a href="https://ekkoing.github.io/cclock/corona-clock/">Go Back To Current Class View (Make Sure You Submit First!)</a>
+	</div>
+</div>
 </body>
 </html>
