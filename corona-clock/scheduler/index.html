@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Scheduler for Hotchkiss Clock</title>
+<script language="javascript" type="text/javascript" src="js/scheduler.js"></script>
+<link href="style/scheduler.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="cookiesAlert()">
+<form class="my-form" action="">
+	<table align="center" style="width:100">
+	  <tr>
+		<th>Scheduler</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+	  </tr>
+	  <tr>
+		<td>Period 1</td>
+		<td>
+		  <input type="text" id="m1" name="m1">
+		</td>
+		<td>
+		  <input type="text" id="t1" name="t1">
+		</td>
+		<td>
+		  <input type="text" id="w1" name="w1">
+		</td>
+		<td>
+		  <input type="text" id="y1" name="y1">
+		</td>
+		<td>
+		  <input type="text" id="f1" name="f1">
+		</td>
+		<td>
+		  <input type="text" id="s1" name="s1">
+		</td>
+	  </tr>
+	  <tr>
+		<td>Period 2</td>
+		<td>
+		  <input type="text" id="m2" name="m2">
+		</td>
+		<td>
+		  <input type="text" id="t2" name="t2">
+		</td>
+		<td>
+		  <input type="text" id="w2" name="w2">
+		</td>
+		<td>
+		  <input type="text" id="y2" name="y2">
+		</td>
+		<td>
+		  <input type="text" id="f2" name="f2">
+		</td>
+		<td>
+		  <input type="text" id="s2" name="s2">
+		</td>
+	  </tr>
+	  <tr>
+		<td>Period 3</td>
+		<td>
+		  <input type="text" id="m3" name="m3">
+		</td>
+		<td>
+		  <input type="text" id="t3" name="t3">
+		</td>
+		<td>
+		  <input type="text" id="w3" name="w3">
+		</td>
+		<td>
+		  <input type="text" id="y3" name="y3">
+		</td>
+		<td>
+		  <input type="text" id="f3" name="f3">
+		</td>
+		<td>
+		  <input type="text" id="s3" name="s3">
+		</td>
+	  </tr>
+	  <tr>
+		<td>Period 4</td>
+		<td>
+		  <input type="text" id="m4" name="m4">
+		</td>
+		<td>
+		  <input type="text" id="t4" name="t4">
+		</td>
+		<td>
+		  <input type="text" id="w4" name="w4">
+		</td>
+		<td>
+		  <input type="text" id="y4" name="y4">
+		</td>
+		<td>
+		  <input type="text" id="f4" name="f4">
+		</td>
+		<td>
+		  <input type="text" id="s4" name="s4">
+		</td>
+		
+	  </tr>
+	  <tr>
+		<td>Period 5A</td>
+		<td>
+		  <input type="text" id="m5" name="m5">
+		</td>
+		<td>
+		  <input type="text" id="t5" name="t5">
+		</td>
+		<td>
+
+		</td>
+		<td>
+		  <input type="text" id="y5" name="y5">
+		</td>
+		<td>
+		  <input type="text" id="f5" name="f5">
+		</td>
+		<td>
+
+		</td>
+	  </tr>
+	  <tr>
+		<td>Period 5B</td>
+		<td>
+		  <input type="text" id="m6" name="m6">
+		</td>
+		<td>
+		  <input type="text" id="t6" name="t6">
+		</td>
+		<td>
+
+		</td>
+		<td>
+		  <input type="text" id="y6" name="y6">
+		</td>
+		<td>
+		  <input type="text" id="f6" name="f6">
+		</td>
+		<td>
+
+		</td>
+	  </tr>
+	  <tr>
+		<td>Period 6</td>
+		<td>
+		  <input type="text" id="m7" name="m7">
+		</td>
+		<td>
+		  <input type="text" id="t7" name="t7">
+		</td>
+		<td>
+		  <p style="color:#FFFFFF; font-size: 9px">Nicholas Lorentzen wrote this code</p>
+		</td>
+		<td>
+		  <input type="text" id="y7" name="y7">
+		</td>
+		<td>
+		  <input type="text" id="f7" name="f7">
+		</td>
+		<td>
+
+		</td>
+	  </tr>
+	  <tr>
+		<td>Period 7</td>
+		<td>
+		  <input type="text" id="m8" name="m8">
+		</td>
+		<td>
+		  <input type="text" id="t8" name="t8">
+		</td>
+		<td>
+
+		</td>
+		<td>
+		  <input type="text" id="y8" name="y8">
+		</td>
+		<td>
+		  <input type="text" id="f8" name="f8">
+		</td>
+		<td>
+
+		</td>
+	  </tr>
+		<tr>
+			<td colspan="6">
+				<table align="center">
+					<tr>
+						<td>Name(Optional)</td>
+						<td>
+							<input type="text" id="name" name="name">
+						</td>
+						<td> Sport (For Upcoming Update)</td>
+						<td>
+							<select id="sex" name="sex">
+								<option value="">N/A</option>
+								<option value="b">Boys</option>
+								<option value="g">Girls</option>
+								<option value="">Co-Ed</option>
+							</select>
+							<select id="designation" name="designation">
+								<option value="">N/A</option>
+								<option value="v">Varsity</option>
+								<option value="jv">JV</option>
+								<option value="3">Thirds</option>
+							</select>
+							<select id="sport" name="sport">
+								<option value="">N/A</option>
+								<option value="" disabled><b>Fall</b></option>
+								<option value="xc">Cross Country</option>
+								<option value="fh">Field Hockey</option>
+								<option value="fb">Football</option>
+								<option value="mb">Mountain Biking</option>
+								<option value="sc">Soccer</option>
+								<option value="vb">Volleyball</option>
+								<option value="wp">Waterpolo</option>
+							</select>
+						</td>
+
+					</tr>
+				</table>
+			</td>
+		</tr>
+	  <tr>
+		  <td colspan="7"><div style="text-align: center;"><input type="button" value="Submit" onClick="exitScheduler();"/></div></td>
+	  </tr>
+	</table>
+</form>
+<br>
+<br>
+</body>
+</html>
