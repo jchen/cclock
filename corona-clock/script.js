@@ -433,8 +433,8 @@ function cookieCheck(scheduleToCheck, weekday)
         }
 
         if (weekday === 5) {
-            cookieAbbrev = ["NA","f1","y1", "NA", "NA"];
-            labels = ["HD 250 or Conflict", "Friday Period 1", "Thursday Period 1", "Community Time", "Weekend!"];
+            cookieAbbrev = ["NA","f1","y2", "NA", "NA"];
+            labels = ["HD 250 or Conflict", "Friday Period 1", "Thursday Period 2", "Community Time", "Weekend!"];
         }
 
         var currentCookie = getCookie(cookieAbbrev[currentPeriodNumber]);

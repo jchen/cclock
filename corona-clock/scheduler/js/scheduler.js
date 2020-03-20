@@ -5,8 +5,8 @@ Nicholas Lorentzen
 Last updated 2020 03 20
 */
 var boiyardee = [];
-var classes = ["m1","m2","m3","t5","t6","t7","t8","t3","s4","w2","y3","y5","y6","f1", "y1", "f8", "name", "timezone"];
-var coronaclasses = {a1: "m1", a2: "t5", a3: "t3", a4: "y3", b1: "m2", b2: "t7", b3: "s4", b4: "y5", b5: "f1", c1: "m3", c2: "t8", c3: "w2", c4: "f8", c5: "y1"};
+var classes = ["m1","m2","m3","t5","t6","t7","t8","t3","s4","w2","y3","y5","y6","f1", "y2", "f8", "name", "timezone"];
+var coronaclasses = {a1: "m1", a2: "t5", a3: "t3", a4: "y3", b1: "m2", b2: "t7", b3: "s4", b4: "y5", b5: "f1", c1: "m3", c2: "t8", c3: "w2", c4: "f8", c5: "y2"};
 
 function addCookie(cookname)
 {
