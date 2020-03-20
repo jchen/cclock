@@ -14,6 +14,11 @@ var d = new Date();
 // Updates the date and time
 function updateD() {
     d = new Date();
+    if(getCookie("timezone") != "" && !(isNaN(getCookie("timezone")))){
+        var offset = parseInt(getCookie("timezone"));
+        //var offset = 12;
+        d.setHours(d.getHours - offset);
+    }
 }
 
 var showTime = true;
