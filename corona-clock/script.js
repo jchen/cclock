@@ -199,68 +199,16 @@ function getSchedule(weekday) {
     var currentSchedule = [];
 
     // Assigns class schedules for weekday scenarios
-    if (weekday === 1 || weekday === 4) {
-        currentSchedule[0] = new Period("Period 1", 8, 30, 9, 15);
-        currentSchedule[1] = new Period("→ Period 2", 9, 15, 9, 20);
-        currentSchedule[2] = new Period("Period 2", 9, 20, 10, 5);
-        currentSchedule[3] = new Period("→ Chapel / Class Meeting", 10, 5, 10, 10);
-        currentSchedule[4] = new Period("Chapel / Class Meeting", 10, 10, 10, 35);
-        currentSchedule[5] = new Period("→ Period 3", 10, 35, 10, 40);
-        currentSchedule[6] = new Period("Period 3", 10, 40, 11, 20);
-        currentSchedule[7] = new Period("→ Period 4", 11, 20, 11, 25);
-        currentSchedule[8] = new Period("Period 4", 11, 25, 12, 5);
-        currentSchedule[9] = new Period("→ Period 5A", 12, 5, 12, 10);
-        currentSchedule[10] = new Period("Period 5A", 12, 10, 12, 55);
-        currentSchedule[11] = new Period("Lunch Bell", 12, 55, 12, 55);
-        currentSchedule[12] = new Period("Period 5B", 12, 55, 13, 40);
-        currentSchedule[13] = new Period("→ Period 6", 13, 40, 13, 45);
-        currentSchedule[14] = new Period("Period 6", 13, 45, 14, 30);
-        currentSchedule[15] = new Period("→ Period 7", 14, 30, 14, 35);
-        currentSchedule[16] = new Period("Period 7", 14, 35, 15, 20);
-        currentSchedule[17] = new Period("end of school", 15, 20, 15, 20);
-        currentSchedule[18] = new Period("end of school", 15, 20, 15, 20);
-    } else if (weekday === 2 || weekday === 5) {
-        currentSchedule[0] = new Period("Period 1", 8, 30, 9, 10);
-        currentSchedule[1] = new Period("→ Period 2", 9, 10, 9, 15);
-        currentSchedule[2] = new Period("Period 2", 9, 15, 9, 55);
-        currentSchedule[3] = new Period("→ Auditorium", 9, 55, 10, 0);
-        currentSchedule[4] = new Period("Auditorium", 10, 0, 10, 35);
-        currentSchedule[5] = new Period("→ Period 3", 10, 35, 10, 40);
-        currentSchedule[6] = new Period("Period 3", 10, 40, 11, 20);
-        currentSchedule[7] = new Period("→ Period 4", 11, 20, 11, 25);
-        currentSchedule[8] = new Period("Period 4", 11, 25, 12, 5);
-        currentSchedule[9] = new Period("→ Period 5A", 12, 5, 12, 10);
-        currentSchedule[10] = new Period("Period 5A", 12, 10, 12, 55);
-        currentSchedule[11] = new Period("Lunch Bell", 12, 55, 12, 55);
-        currentSchedule[12] = new Period("Period 5B", 12, 55, 13, 40);
-        currentSchedule[13] = new Period("→ Period 6", 13, 40, 13, 45);
-        currentSchedule[14] = new Period("Period 6", 13, 45, 14, 30);
-        currentSchedule[15] = new Period("→ Period 7", 14, 30, 14, 35);
-        currentSchedule[16] = new Period("Period 7", 14, 35, 15, 20);
-        currentSchedule[17] = new Period("end of school", 15, 20, 15, 20);
-        currentSchedule[18] = new Period("end of school", 15, 20, 15, 20);
-    } else if (weekday === 3) {
-        currentSchedule[0] = new Period("Period 1", 8, 50, 9, 35);
-        currentSchedule[1] = new Period("→ Period 2", 9, 35, 9, 40);
-        currentSchedule[2] = new Period("Period 2", 9, 40, 10, 25);
-        currentSchedule[3] = new Period("→ Advisory", 10, 25, 10, 30);
-        currentSchedule[4] = new Period("Advisory", 10, 30, 10, 45);
-        currentSchedule[5] = new Period("→ Period 3", 10, 45, 10, 50);
-        currentSchedule[6] = new Period("Period 3", 10, 50, 11, 30);
-        currentSchedule[7] = new Period("→ Period 4", 11, 30, 11, 35);
-        currentSchedule[8] = new Period("Period 4", 11, 35, 12, 15);
-        currentSchedule[9] = new Period("end of school", 12, 15, 12, 15);
-        currentSchedule[10] = new Period("end of school", 12, 15, 12, 15);
-    } else if (weekday === 6) {
-        currentSchedule[0] = new Period("Period 1", 8, 30, 9, 15);
-        currentSchedule[1] = new Period("→ Period 2", 9, 15, 9, 20);
-        currentSchedule[2] = new Period("Period 2", 9, 20, 10, 5);
-        currentSchedule[3] = new Period("Break", 10, 5, 10, 20);
-        currentSchedule[4] = new Period("Period 3", 10, 20, 11, 5);
-        currentSchedule[5] = new Period("→ Period 4", 11, 5, 11, 10);
-        currentSchedule[6] = new Period("Period 4", 11, 10, 11, 55);
-        currentSchedule[7] = new Period("end of school", 11, 55, 11, 55);
-        currentSchedule[8] = new Period("end of school", 11, 55, 11, 55);
+    if (weekday >= 1 && weekday <= 5) {
+        currentSchedule[0] = new Period("1", 9, 30, 10, 15);
+        currentSchedule[1] = new Period("→ 2", 10, 15, 10, 25);
+        currentSchedule[2] = new Period("2", 10, 25, 11, 10);
+        currentSchedule[3] = new Period("→ 3", 11, 10, 11, 20);
+        currentSchedule[4] = new Period("3", 10, 20, 12, 5);
+        currentSchedule[5] = new Period("→ 4", 12, 5, 12, 15);
+        currentSchedule[6] = new Period("4", 12, 15, 12, 35);
+        currentSchedule[7] = new Period("5", 12, 35, 12, 35);
+        currentSchedule[8] = new Period("5", 12, 35, 12, 35);
     } else {
         noClasses();
     }
@@ -439,7 +387,7 @@ function getCookie(cname) {
 
 function cookieCheck(scheduleToCheck, weekday)
 {
-	var cookieAbbrev = ["m", "t", "w", "y", "f", "s"];
+	var cookieAbbrev = [""];
 	var currentAbbrev = cookieAbbrev[weekday - 1];
 	
 	for(var i = 0; i < scheduleToCheck.length; i++){
@@ -447,8 +395,59 @@ function cookieCheck(scheduleToCheck, weekday)
 		var currentPeriodName = currentPeriod.title;
 		var addArrow = false;
 		if(currentPeriodName.includes("→")){
-			addArrow = true;
-		}
+            addArrow = true;
+            currentPeriodName = currentPeriodName.substring(2);
+        }
+
+        var currentPeriodNumber = parseInt(currentPeriodName) - 1;
+
+        var cookieAbbrev = [""];
+        var labels = [""];
+
+        if (weekday === 1) {
+            cookieAbbrev = ["m1","m2","m3", "NA", "NA"];
+            labels = ["Monday Period 1", "Monday Period 2", "Monday Period 3", "Community Time", "End Of Classes"];
+        }
+
+        if (weekday === 2) {
+            cookieAbbrev = ["t5","t7","t8", "NA", "NA"];
+            labels = ["Tuesday Period 5", "Tuesday Period 6", "Tuesday Period 7", "Community Time", "End Of Classes"];
+        }
+
+        if (weekday === 3) {
+            cookieAbbrev = ["t3","s4","w2", "NA", "NA"];
+            labels = ["Tuesday Period 3", "Saturday Period 4", "Wednesday Period 2", "HD 150 & 550", "End Of Classes"];
+        }
+
+        if (weekday === 4) {
+            cookieAbbrev = ["y3","y5","f8", "NA", "NA"];
+            labels = ["Thursday Period 3", "Thursday Period 5", "Friday Period 7", "Community Time", "End Of Classes"];
+        }
+
+        if (weekday === 5) {
+            cookieAbbrev = ["NA","f1","y1", "NA", "NA"];
+            labels = ["HD 250 or Conflict", "Friday Period 1", "Thursday Period 1", "Community Time", "Weekend!"];
+        }
+
+        var currentCookie = getCookie(cookieAbbrev[currentPeriodNumber]);
+
+        if (cookieAbbrev[currentPeriodNumber].charAt(1) === 5 && (currentCookie === "" || currentCookie === "Lunch")) {
+            currentCookie = getCookie(cookieAbbrev[currentPeriodNumber].substr(0,1) + "6");
+        }
+
+        if (currentCookie === "") {
+            currentPeriod.name = labels[currentPeriodNumber];
+        } else {
+            currentPeriod.name = currentCookie;
+        }
+
+        if (addArrow) {
+            currentPeriod.name = "→ " + currentPeriod.name;
+        }
+
+        scheduleToCheck[i] = currentPeriod;
+
+        /**
 		if(currentPeriodName.includes("Period")){
 			var numIdx = 7;
 			if(addArrow) {numIdx = 9;}
@@ -461,7 +460,8 @@ function cookieCheck(scheduleToCheck, weekday)
 			}
 			currentPeriod.title = currentPeriodName;
 			scheduleToCheck[i] = currentPeriod;
-		}
+        }
+         */
 	}
 	return scheduleToCheck;
 }
