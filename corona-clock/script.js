@@ -213,7 +213,7 @@ function getSchedule(weekday) {
         noClasses();
     }
 	
-    //return cookieCheck(schedule, weekday);
+    return cookieCheck(schedule, weekday);
     
     //Cookie Check Copy
 
@@ -438,16 +438,16 @@ function cookieCheck(scheduleToCheck, weekday)
             currentCookie = getCookie(cookieAbbrev[currentPeriodNumber].substr(0,1) + "6");
         }
 
-        currentPeriod.name = currentCookie;
-        if (currentPeriod.name === "") {
-            currentPeriod.name = labels[currentPeriodNumber];
+        currentPeriod.title = currentCookie;
+        if (currentPeriod.title === "") {
+            currentPeriod.title = labels[currentPeriodNumber];
         }
 
         if (addArrow) {
-            currentPeriod.name = "→ " + currentPeriod.name;
+            currentPeriod.title = "→ " + currentPeriod.title;
         }
 
-        scheduleToCheck[i].name = currentPeriod.name;
+        scheduleToCheck[i].title = currentPeriod.title;
 
         /**
 		if(currentPeriodName.includes("Period")){
