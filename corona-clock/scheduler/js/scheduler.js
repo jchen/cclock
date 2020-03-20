@@ -5,7 +5,8 @@ Nicholas Lorentzen
 Last updated 2019 04 15
 */
 var boiyardee = [];
-var classes = ["m1","m2","m3","t5","t6","t7","t8","t3","s4","w2","y3","y5","y6","y8","f1", "name", "timezone"];
+var classes = ["m1","m2","m3","t5","t6","t7","t8","t3","s4","w2","y3","y5","y6","f1", "name", "timezone"];
+var coronaclasses = {a1: "m1", a2: "t5", a3: "t3", a4: "y3", b1: "m2", b2: "t7", b3: "s4", b4: "y5", b5: "f1", c1: "m3", c2: "t8", c3: "w2", c4: "f8", c5: "y1"};
 
 function addCookie(cookname)
 {
@@ -38,8 +39,9 @@ function putCookie()
 function exitScheduler()
 {
 	putCookie();	
+	loadCoronaSchedule();
 	alert("Schedule Updated!");
-	window.location.href = "https://ekkoing.github.io/cclock/corona-clock/scheduler";
+	//window.location.href = "https://ekkoing.github.io/cclock/corona-clock/scheduler";
 }
 
 function cookiesAlert()
@@ -47,6 +49,7 @@ function cookiesAlert()
 	window.alert("Welcome to the scheduler! In order to use this service you will need cookies enabled. Note that any data entered here cannot be read from any other computer and exists purely on your device. This means that all data must be entered on each device separately until I come up with a more elegant solution - Nicholas Lorentzen '20");
 	
 	classes.forEach(fillTable);
+	loadCoronaSchedule();
 }
 
 function fillTable(chef)
@@ -74,4 +77,28 @@ function updateScheduler()
 {
 	document.cookie = document.getElementById("pasteCode").value + ";domain=ekkoing.github.io;max-age=31536000;path=/";
 	alert(document.cookie);
+}
+
+function loadCoronaSchedule() 
+{
+	//if (document.cookie === "") {return;}
+	for(var key in coronaclasses) {
+		var cellValue = "";
+		if (coronaclasses[key].charAt(1) === '5') {
+			var dayKey = coronaclasses[key].charAt(0);
+			var aVal = document.getElementById(dayKey + "5").value;
+			var bVal = document.getElementById(dayKey + "6").value;
+			if (aVal === "" || aVal === "Lunch") {
+				cellValue = bVal;
+			} else {
+				cellValue = aVal;
+			}
+		} else {
+			cellValue = document.getElementById(coronaclasses[key]).value;
+		}
+
+		if (cellValue != "") {
+			document.getElementById(key).innerHTML = cellValue;
+		}
+	}
 }
