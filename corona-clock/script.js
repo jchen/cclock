@@ -17,7 +17,7 @@ function updateD() {
     if(getCookie("timezone") != "" && !(isNaN(getCookie("timezone")))){
         var offset = parseInt(getCookie("timezone"));
         //var offset = 12;
-        d.setHours(d.getHours - offset);
+        d.setHours(d.getHours() - offset);
     }
 }
 
