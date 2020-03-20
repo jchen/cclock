@@ -1,7 +1,7 @@
 /*
 Controller for clock/time webapp
 Nicholas Lorentzen, Jiahua Chen, based off Eric Li's original design
-Last updated 26 August 2019
+Last updated 20 March 2020
 */
 
 // Gets the current date and time
