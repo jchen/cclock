@@ -10,6 +10,7 @@ var d = new Date();
 // console.log(" *** d.getDate() " + d.getDate());
 // console.log(" *** d.getMonth() " + d.getMonth());
 // console.log(" *** dayType noClassSats" + i);
+window.location.href = "https://ekkoing.github.io/cclock/corona-clock";
 
 // Updates the date and time
 function updateD() {
