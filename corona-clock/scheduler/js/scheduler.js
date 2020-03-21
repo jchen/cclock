@@ -124,8 +124,14 @@ function adjustTimezone() {
 	for(var i = 0; i < allTimes.length; i++) {
 		var timePeriod = allTimes[i];
 
-		timePeriod[1] = (timePeriod[1] + timezone) % 12;
-		timePeriod[3] = (timePeriod[3] + timezone) % 12;
+		var timePeriod1Val = (timePeriod[1] + timezone);
+		var timePeriod3Val = (timePeriod[3] + timezone);
+
+		if (timePeriod1Val % 12 != 0) {timePeriod1Val = timePeriod1Val % 12;} else {timePeriod1Val = 12;}
+		if (timePeriod3Val % 12 != 0) {timePeriod3Val = timePeriod3Val % 12;} else {timePeriod3Val = 12;}
+
+		timePeriod[1] = timePeriod1Val;
+		timePeriod[3] = timePeriod3Val;
 
 		var idOfElement = elementIDs[timePeriod[0]];
 
