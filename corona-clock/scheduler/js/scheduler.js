@@ -101,4 +101,43 @@ function loadCoronaSchedule()
 			document.getElementById(key).innerHTML = cellValue;
 		}
 	}
+
+	adjustTimezone();
 }
+
+function adjustTimezone() {
+
+	if(isNaN(getCookie("timezone")) &&  isNaN(document.getElementById("timezone").value)) {return;}
+
+	var timezone = parseInt(document.getElementById("timezone").value);
+
+	if(isNaN(timezone)) {return;}
+
+	var aTime = [0, 9, 30, 10, 15];
+	var bTime = [1, 10, 25, 11, 10];
+	var cTime = [2, 11, 20, 12, 05];
+	var dTime = [3, 12, 15, 12, 35];
+	var allTimes = [aTime, bTime, cTime, dTime];
+
+	var elementIDs = ["atime", "btime", "ctime", "dtime"];
+
+	for(var i = 0; i < allTimes.length; i++) {
+		var timePeriod = allTimes[i];
+
+		timePeriod[1] = (timePeriod[1] + timezone) % 12;
+		timePeriod[3] = (timePeriod[3] + timezone) % 12;
+
+		var idOfElement = elementIDs[timePeriod[0]];
+
+		document.getElementById(idOfElement).innerHTML = `${timePeriod[1]}:${timePeriod[2]} - ${timePeriod[3]}:${padNumber(timePeriod[4])}`;
+	}
+}
+
+function padNumber(num) {
+	if (num < 10) {
+		return `0${num}`;
+	} else {
+		return `${num}`;
+	}
+}
+
