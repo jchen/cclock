@@ -414,27 +414,27 @@ function cookieCheck(scheduleToCheck, weekday)
 
         if (weekday === 1) {
             cookieAbbrev = ["m1","m2","m3", "NA", "NA"];
-            labels = ["Monday Period 1", "Monday Period 2", "Monday Period 3", "Community Time", "End Of Classes"];
+            labels = ["Monday Period 1", "Monday Period 2", "Monday Period 3", "Advisory", "End Of Classes"];
         }
 
         if (weekday === 2) {
             cookieAbbrev = ["t5","t7","t8", "NA", "NA"];
-            labels = ["Tuesday Period 5", "Tuesday Period 6", "Tuesday Period 7", "Community Time", "End Of Classes"];
+            labels = ["Tuesday Period 5", "Tuesday Period 6", "Tuesday Period 7", "HD 150 & 550", "End Of Classes"];
         }
 
         if (weekday === 3) {
             cookieAbbrev = ["t3","s4","w2", "NA", "NA"];
-            labels = ["Tuesday Period 3", "Saturday Period 4", "Wednesday Period 2", "HD 150 & 550", "End Of Classes"];
+            labels = ["Tuesday Period 3", "Saturday Period 4", "Wednesday Period 2", "Class Meeting", "End Of Classes"];
         }
 
         if (weekday === 4) {
             cookieAbbrev = ["y3","y5","f8", "NA", "NA"];
-            labels = ["Thursday Period 3", "Thursday Period 5", "Friday Period 7", "Community Time", "End Of Classes"];
+            labels = ["Thursday Period 3", "Thursday Period 5", "Friday Period 7", "Chapel", "End Of Classes"];
         }
 
         if (weekday === 5) {
             cookieAbbrev = ["NA","f1","y2", "NA", "NA"];
-            labels = ["HD 250 or Conflict", "Friday Period 1", "Thursday Period 2", "Community Time", "Weekend!"];
+            labels = ["HD 250 or Conflict", "Friday Period 1", "Thursday Period 2", "All-School Meeting", "Weekend!"];
         }
 
         var currentCookie = getCookie(cookieAbbrev[currentPeriodNumber]);
