@@ -11,14 +11,42 @@ var d = new Date();
 // console.log(" *** d.getMonth() " + d.getMonth());
 // console.log(" *** dayType noClassSats" + i);
 
+var isFirstRun = true;
+var ignoreCookieOffset = false;
+
 // Updates the date and time
 function updateD() {
     d = new Date();
-    if(getCookie("timezone") != "" && !(isNaN(getCookie("timezone")))){
+    if((getCookie("timezone") != "" && !(isNaN(getCookie("timezone")))) && !ignoreCookieOffset){
         var offset = parseInt(getCookie("timezone"));
-        //var offset = 12;
+        if (isFirstRun) {
+            isFirstRun = false;
+            if (offset != getHotchkissOffset()) {
+                var message = "We now have the capability to automatically set your timezone. It appears your setting of the timezone is incorrect. Press confirm to correct or cancel if we are wrong.";
+                if (window.confirm(message)) {
+                    ignoreCookieOffset = true;
+                }
+            }
+        }
         d.setHours(d.getHours() - offset);
+    } else {
+        d = autoTimezoneAttempt();
     }
+}
+
+function autoTimezoneAttempt() {
+    var hotchkissOffset = getHotchkissOffset();
+    
+    var adjDate = new Date()
+    adjDate.setHours(adjDate.getHours() - hotchkissOffset);
+    return adjDate;
+}
+
+function getHotchkissOffset() {
+    var offset = new Date().getTimezoneOffset();
+    var offsetHours = offset / -60;
+    var hotchkissOffset = parseInt("" + (offsetHours + 4));
+    return hotchkissOffset;
 }
 
 var showTime = true;
