@@ -317,3 +317,41 @@ h1, h2, h3, h4, h5, h6, b, strong {
         background-position: 0% 50%
     }
 }
+
+/* Decount BS */
+.dcLink {
+    background-color:#44c767;
+    border-radius:28px;
+    border:1px solid #18ab29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+    margin-top:10px;
+    text-shadow:0px 1px 0px #2f6627;
+}
+.dcLink:hover {
+    background-color:#5cbf2a;
+}
+.dcLink:active {
+    position:relative;
+    top:1px;
+}
+
+#noDc {
+    background-color:#c74444;
+    border-radius:28px;
+    border:1px solid #b84242;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+    margin-top:10px;
+    text-shadow:0px 1px 0px #5c1e1e;
+}

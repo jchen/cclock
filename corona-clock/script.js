@@ -398,7 +398,18 @@ function onLoad() {
     loadDate();
     update();
     weekendText = thisWeekend();
-	document.getElementById("schedule-message").style.display = "block";
+    document.getElementById("schedule-message").style.display = "block";
+
+    if (localStorage.getItem('noDecount') != null && localStorage.getItem('noDecount') === 'true') {
+        stopShowingDecountAd();
+    } else {
+        document.getElementById("noDc").onclick = function() {
+            var decountAd = document.getElementById("decount-id");
+            decountAd.parentNode.removeChild(decountAd);
+            localStorage.setItem('noDecount', 'true');
+            return false;
+        }
+    }
 }
 
 // Below Code from Nicholas Lorentzen '20
@@ -621,6 +632,12 @@ function updateMainMessage()
 		document.getElementById("message").innerHTML = mainMessage;
 		document.getElementById("message-widget").style.display = "block";
     }
+}
+
+function stopShowingDecountAd() {
+    var decountAd = document.getElementById("decount-id");
+    decountAd.parentNode.removeChild(decountAd);
+    localStorage.setItem('noDecount', 'true');
 }
 
 setInterval(loadTime, 1000);
