@@ -75,6 +75,11 @@ function fillTable(chef)
 	if (cellVal === "Lunch" || cellVal === "Free") {
 		cellVal = "";
 	}
+
+	if (chef === "timezone") {
+		cellVal = getHotchkissOffset();
+	}
+
 	document.getElementById(chef).value = cellVal;
 }
 
@@ -158,6 +163,13 @@ function adjustTimezone() {
 
 		document.getElementById(idOfElement).innerHTML = `${timePeriod[1]}:${timePeriod[2]} - ${timePeriod[3]}:${padNumber(timePeriod[4])}`;
 	}
+}
+
+function getHotchkissOffset() {
+    var offset = new Date().getTimezoneOffset();
+    var offsetHours = offset / -60;
+    var hotchkissOffset = parseInt("" + (offsetHours + 4));
+    return hotchkissOffset;
 }
 
 function padNumber(num) {
