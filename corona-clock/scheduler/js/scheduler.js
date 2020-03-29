@@ -1,12 +1,14 @@
 
 /*
-Scheduler for Hotchkiss Clock
+Scheduler for Hotchkiss Clock Corona Edition
 Nicholas Lorentzen
-Last updated 2020 03 20
+Last updated 2020 03 29
 */
 var boiyardee = [];
 var classes = ["m1","m2","m3","t5","t6","t7","t8","t3","s4","w2","y3","y5","y6","f1", "y2", "f8", "name", "timezone"];
 var coronaclasses = {a1: "m1", a2: "t5", a3: "t3", a4: "y3", b1: "m2", b2: "t7", b3: "s4", b4: "y5", b5: "f1", c1: "m3", c2: "t8", c3: "w2", c4: "f8", c5: "y2"};
+
+var abConflictMessage = "WARNING: Please make sure you only fill out periods for which you actually have class. It looks like you have both 5A and 5B filled out on a day. This program will automatically handle free periods in the live view clock mode.";
 
 function addCookie(cookname)
 {
@@ -38,9 +40,24 @@ function putCookie()
 
 function exitScheduler()
 {
+	//Check Tuesday 5A 5B Conflicts
+	var aVal = document.getElementById("t5").value.toLowerCase();
+	var bVal = document.getElementById("t6").value.toLowerCase();
+	if ((aVal != "" && bVal != "") && (aVal != "lunch" && bVal != "lunch")) {
+		window.alert(abConflictMessage);
+		return;
+	}
+
+	//Check Thursday 5A 5B Conflicts
+	aVal = document.getElementById("y5").value.toLowerCase();
+	bVal = document.getElementById("y6").value.toLowerCase();
+	if ((aVal != "" && bVal != "") && (aVal != "lunch" && bVal != "lunch")) {
+		window.alert(abConflictMessage);
+		return;
+	}
+
 	putCookie();	
 	loadCoronaSchedule();
-	alert("Schedule Updated!");
 	//window.location.href = "https://ekkoing.github.io/cclock/corona-clock/scheduler";
 }
 
@@ -54,7 +71,11 @@ function cookiesAlert()
 
 function fillTable(chef)
 {
-	document.getElementById(chef).value = getCookie(chef);
+	var cellVal = getCookie(chef);
+	if (cellVal === "Lunch" || cellVal === "Free") {
+		cellVal = "";
+	}
+	document.getElementById(chef).value = cellVal;
 }
 
 function getCookie(cname) {
@@ -88,7 +109,7 @@ function loadCoronaSchedule()
 			var dayKey = coronaclasses[key].charAt(0);
 			var aVal = document.getElementById(dayKey + "5").value;
 			var bVal = document.getElementById(dayKey + "6").value;
-			if (aVal === "" || aVal === "Lunch") {
+			if (aVal === "" || aVal.toLowerCase() === "lunch" ||aVal.toLowerCase() === "free") {
 				cellValue = bVal;
 			} else {
 				cellValue = aVal;
