@@ -479,7 +479,7 @@ function cookieCheck(scheduleToCheck, weekday)
         var currentCookie = getCookie(cookieAbbrev[currentPeriodNumber]);
 
         if (cookieAbbrev[currentPeriodNumber].charAt(1) === 5 && (currentCookie === "" || currentCookie.toLowerCase() === "lunch" || currentCookie.toLowerCase() === "free")) {
-            currentCookie = getCookie(cookieAbbrev[currentPeriodNumber].substr(0,1) + "6");
+            currentCookie = getCookie(cookieAbbrev[currentPeriodNumber].charAt(0) + "6");
         }
 
         currentPeriod.title = currentCookie;
