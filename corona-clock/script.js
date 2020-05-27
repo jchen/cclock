@@ -60,7 +60,7 @@ var mainMessage = "";
 var onbreak = false;
 var specialDays = [new CalDay(10, 12), new CalDay(11, 23)]; // <- For special event days
 var noClassSats = [new CalDay(9, 14), new CalDay(10, 5), new CalDay(11, 2), new CalDay(12, 7)]; // <- For days without Saturday classes
-var noClassDays = [new CalDay(5, 27), new CalDay(6, 1)]; // <- For days without classes, or breaks
+var noClassDays = [new CalDay(6, 1)]; // <- For days without classes, or breaks
 var holidayDays = [new CalDay(10, 14), new CalDay(10, 15), new CalDay(12, 2)]; // <- For holidays
 
 //What the current period's array location is
