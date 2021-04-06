@@ -2,7 +2,7 @@
 
 **CClock** stands for *countdown clock*, or *class clock*. It is meant to count down the time left in each class block, and is also a reminder for the time remaining until the start of the next class block. CClock is fully customizable, adaptable, and works on all devices. Additionally, the simplest version of CClock (here) is fully static and only runs clientside. This means that CClock can be run from Github Pages or another static site host. 
 
-![Screenshot of CClock](https://jiahuac.github.io/cclock/assets/screenshot.jpg)
+![Screenshot of CClock](https://raw.githubusercontent.com/jchen/cclock/master/assets/screenshot.jpg)
 
 ## Table of Contents
   * [Installation](#installation)
